@@ -584,3 +584,19 @@ Antes de qualquer alteração:
 5. Auditar segurança, recuperação e compatibilidade das ROMs.
 
 **Decisão:** continuar investigando LineageOS 14.1, mas não instalar ainda. A prioridade é recuperar espaço de maneira reversível, verificar o funcionamento do cartão SD e determinar se a ROM oferece benefício suficiente para justificar o risco.
+
+
+### 17.9 Estado de armazenamento informado pela pessoa usuária
+
+Em 09/11/2026, a pessoa usuária confirmou que o tablet está utilizando somente os **8 GB de armazenamento interno** e que não há cartão microSD instalado.
+
+Consequências para a avaliação:
+- Não há armazenamento externo disponível no momento para receber fotografias, vídeos ou downloads.
+- A falta de espaço interno é compatível com as falhas relatadas ao abrir a Galeria e baixar imagens, embora a causa completa ainda precise ser diagnosticada.
+- A especificação oficial Samsung do SM-T280 indica suporte a microSD de até 200 GB. A capacidade anunciada não significa que o cartão seja automaticamente mesclado ao armazenamento interno.
+- Um microSD usado como armazenamento portátil é a alternativa menos invasiva para arquivar mídia e documentos, preservando o Android original.
+- O cartão adotável é uma hipótese para investigar em ROM baseada em Android 7.1; sua disponibilidade na build específica continua não comprovada. A adoção formata e criptografa o cartão, vinculando-o ao tablet.
+
+Fonte oficial de especificação: https://image-us.samsung.com/SamsungUS/b2b/product/sm/t2/80/smt280nzwaxar/TAB-GALAXYTABADSHT-APR16TFinal4-27-16.pdf
+
+**Estado:** ausência de cartão microSD confirmada pela pessoa usuária; compra/uso de cartão não decidido; nenhum cartão formatado ou adotado.
