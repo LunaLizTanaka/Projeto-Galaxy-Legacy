@@ -132,3 +132,14 @@ A pessoa responsável também deseja melhorar o próprio SM-T280 e mantém abert
 A avaliação de ROM foi reaberta como possibilidade de manutenção do tablet. Antes de qualquer instalação, devem ser identificados os avisos exatos, investigadas suas causas e comprovada uma rota de recuperação específica para o SM-T280. Nenhuma ROM está aprovada e nenhuma alteração no sistema foi realizada.
 
 Consulte [Pesquisa de ROM para SM-T280](docs/PESQUISA-ROM-SM-T280.md) e [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
+
+
+## 14. Gerenciador de arquivos e nuvem
+
+O Galaxy Legacy deverá incluir um gerenciador de arquivos e uma nuvem privada integrada ao website. Arquivos criados dentro do ambiente e arquivos escolhidos para importação serão enviados ao armazenamento remoto, com autenticação, confirmação de upload, organização, visualização, download e exclusão.
+
+No SM-T280, a importação dos arquivos já existentes dependerá do seletor de arquivos do Chrome 43 e da escolha explícita da pessoa usuária. O website não pode vasculhar automaticamente todo o armazenamento Android, ler dados privados de aplicativos ou copiar a tela inicial do Android.
+
+O provedor de armazenamento ainda será escolhido após avaliação de quotas gratuitas, custos, segurança e integração. Não presumir nuvem gratuita ou ilimitada.
+
+Ver a seção 11 de [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
