@@ -76,4 +76,8 @@ A interface será aprovada quando:
 
 **Aprovado:** identidade visual Paleta D — Strawberry Milk, intensidade soft.
 
-**Ainda a desenvolver e validar:** protótipo interativo, comportamento das janelas, navegação pelo cenário, compatibilidade com Chrome 43 e desempenho no tablet físico.
+**Protótipo visual v0.1 criado (09/11/2026):** foi produzida uma página HTML autônoma, sem dependências externas, com janelas móveis, minimização/restauração pelo dock, painéis fixáveis e navegação por arraste do cenário. A cópia para visualização foi entregue separadamente como arquivo HTML e pacote ZIP.
+
+**Testes realizados nesta etapa:** verificações automatizadas em Chromium em resoluções desktop, tablet e celular; abertura de janelas, minimização/restauração, fixação/desfixação, navegação do calendário e movimentação do cenário foram exercitadas sem erros de JavaScript.
+
+**Ainda não validado:** Chrome 43 e desempenho no SM-T280 físico. Os testes em Chromium não comprovam compatibilidade no tablet; essa validação permanece pendente e não deve ser presumida.
