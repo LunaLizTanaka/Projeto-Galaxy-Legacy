@@ -392,3 +392,78 @@ Android 7.1 tem suporte de plataforma a múltiplas janelas e contempla o modo fr
 - **Galaxy Legacy:** começar pelo launcher e integração de APIs Android comuns. Freeform/multijanela fica como fase posterior e depende da ROM e de testes reais.
 
 **Nenhuma ROM, recuperação ou firmware stock está aprovado para gravação.** Não houve download nem inspeção dos pacotes binários, cálculo de hash local, reconhecimento USB do SM-T280 ou teste físico.
+
+
+## 16. Reabertura da avaliação de ROM como manutenção do tablet (09/11/2026)
+
+A pessoa responsável esclareceu que deseja melhorar o próprio tablet, inclusive mantendo aberta a possibilidade de modificar a ROM. Esta é uma frente separada do Galaxy Legacy Web, cuja direção continua sendo um website 100% online sobre o Android existente.
+
+### 16.1 Motivo relatado
+
+A pessoa usuária relata avisos que considera suspeitos, incluindo alertas relacionados a memória cheia e monitoramento. Os textos exatos, telas, datas e circunstâncias ainda não foram fornecidos.
+
+**Não presumir malware, spyware ou espionagem.** O aviso de memória cheia e um aviso de monitoramento podem ter causas diferentes e precisam ser investigados separadamente.
+
+### 16.2 Interpretação preliminar do aviso de monitoramento
+
+Se a mensagem exata for “A rede pode estar sendo monitorada” / “Network may be monitored”, a documentação Samsung informa que esse aviso pode ser acionado pela presença de um certificado de autoridade (CA) instalado pelo usuário. A especificação de compatibilidade Android também prevê aviso quando um certificado de CA do usuário é adicionado ou quando o tráfego é encaminhado por uma VPN.
+
+Fontes:
+- Samsung Knox — “Network may be monitored” shown after installing a private CA certificate: https://docs.samsungknox.com/admin/knox-platform-for-enterprise/kbas/kba-115013363628/
+- Android Compatibility Definition — Network Traffic / user root CA / VPN: https://source.android.com/docs/compatibility/cdd
+
+Esse aviso, isoladamente, **não comprova que alguém esteja espionando o dispositivo**. Pode existir uma explicação legítima, como uma VPN ou ferramenta que instala certificado para filtragem de tráfego. O certificado ou VPN desconhecido, entretanto, merece identificação antes de ser considerado confiável.
+
+Não remover certificados, VPNs, administradores ou aplicativos sem primeiro registrar e identificar o que são. Não usar ferramentas de “remoção de monitoramento”, bypass ou limpeza desconhecidas.
+
+### 16.3 Interpretação preliminar do aviso de memória
+
+O tablet foi identificado como SM-T280 com 8 GB de armazenamento interno e 1,5 GB de RAM. “Armazenamento cheio” e “memória RAM insuficiente” são problemas distintos.
+
+- Armazenamento cheio: espaço persistente ocupado por sistema, aplicativos, dados, cache e arquivos.
+- RAM insuficiente: memória de trabalho consumida por Android e processos ativos.
+
+A mensagem exata e a tela de armazenamento precisam ser verificadas. Não recomendar limpeza indiscriminada, exclusão de arquivos de sistema ou restauração de fábrica antes do diagnóstico.
+
+### 16.4 Plano de diagnóstico não destrutivo
+
+Antes de alterar a ROM:
+
+1. Obter capturas/fotografias legíveis dos avisos exatos e do detalhe mostrado ao tocar neles.
+2. Registrar a versão/build e o nível do patch de segurança exibidos em “Sobre o dispositivo”, se disponíveis.
+3. Verificar a categoria de armazenamento ocupada pelo sistema, aplicativos, dados e arquivos, sem apagar nada.
+4. Identificar certificados de usuário, VPNs e administradores do dispositivo, sem remover ou desativar itens desconhecidos até entender sua origem.
+5. Comparar as evidências com documentação Samsung e Android, registrando cada achado como confirmado, provável ou pendente.
+
+A intervenção deve parar se aparecer bloqueio de conta, alerta de integridade, comportamento inesperado ou pedido para instalar ferramenta desconhecida.
+
+### 16.5 Decisão de ROM atualizada
+
+A modificação da ROM **não está descartada**. A LineageOS 14.1 e a AICP 12.1 continuam sendo candidatas/pistas históricas a investigar, não escolhas aprovadas.
+
+Uma ROM mais recente não garante por si só:
+- Remover um certificado de usuário ou VPN.
+- Resolver uma mensagem de armazenamento cheio.
+- Corrigir falhas de hardware ou drivers.
+- Oferecer patches completos e verificáveis.
+- Preservar câmera, Wi-Fi, Bluetooth, áudio, carregamento e suspensão.
+
+O estado de segurança deve considerar o patch efetivamente integrado, kernel, componentes proprietários, SELinux, configuração de depuração e manutenção real. A nota de lançamento de uma build não basta para comprovar esses itens.
+
+A publicação AICP 12.1 investigada já possui alertas de configuração registrados nas seções anteriores, portanto não deve ser promovida a recomendação de instalação sem análise mais profunda.
+
+### 16.6 Estado após a reabertura
+
+| Item | Situação |
+|---|---|
+| Intenção de melhorar o tablet | Confirmada |
+| Interesse em avaliar ROM personalizada | Reaberto |
+| Avisos exatos identificados | Pendente |
+| Diagnóstico de armazenamento | Pendente |
+| Certificados/VPN/admins identificados | Pendente |
+| ROM selecionada | Nenhuma |
+| Firmware stock de retorno validado | Pendente |
+| Recuperação pelo Chromebook validada | Pendente |
+| Desbloqueio/root/flash | Não realizados e não autorizados |
+
+**Decisão de segurança:** continuar a investigação de ROM, mas começar pelo diagnóstico não destrutivo dos avisos. Não instalar uma ROM como tentativa às cegas de remover notificações ou alertas.
