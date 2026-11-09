@@ -130,3 +130,20 @@ Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parse
 - Fechamento pelo alvo X inferior continua disponível.
 
 Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parser padrão do Python, regras principais conferidas estaticamente e ZIP testado sem erros. O teste real no navegador/Chrome 43 do SM-T280 ainda está pendente.
+
+
+## v0.8 — modo de aplicativo em tela cheia (09/11/2026)
+
+- A interface ocupa toda a área de conteúdo disponível do navegador e se adapta ao tamanho da tela.
+- Ao abrir um aplicativo, ele continua iniciando em uma janela flutuante, sem janelas abertas automaticamente na entrada.
+- Arrastar a barra superior da janela até o topo transforma o aplicativo em uma tela própria, sem moldura de janela, área de trabalho, dock ou páginas visíveis.
+- O modo de tela cheia usa a mesma janela e o mesmo conteúdo do aplicativo; ao voltar, o estado editável é preservado e a janela retorna à área de trabalho.
+- No modo de aplicativo, a seta de voltar retorna à área de trabalho. O gesto de baixo para cima também retorna; no desktop, esse gesto continua abrindo a gaveta de aplicativos.
+- O gesto de cima para baixo continua abrindo Configurações rápidas, inclusive sobre um aplicativo em tela cheia.
+- Incluídos `manifest.json` com `display: fullscreen` e ícones do protótipo para instalação em navegadores compatíveis.
+- A página tenta solicitar a API nativa de tela cheia após uma ação explícita do usuário, quando o navegador oferece esse recurso.
+- O CSS e o JavaScript foram mantidos sem frameworks e sem CSS Grid/variáveis de CSS, para reduzir dependências e favorecer navegadores antigos.
+
+**Limite importante:** abrir `index.html` como arquivo local ocupa a área de conteúdo do Chrome, mas não remove por si só a barra de endereço e os controles do navegador. O manifesto de instalação depende de publicação em uma origem compatível (normalmente HTTPS), instalação/adicionamento à tela inicial e suporte do navegador. A API de tela cheia também depende do navegador. Não há confirmação de que o Chrome 43 do SM-T280 ofereça o comportamento imersivo completo.
+
+**Verificações v0.8:** JavaScript aprovado em `node --check`; HTML analisado pelo parser padrão do Python; JSON do manifesto validado; integridade do ZIP conferida. A execução visual no Chromium deste ambiente não foi concluída. O teste no Chrome 43 e no tablet físico permanece pendente.
