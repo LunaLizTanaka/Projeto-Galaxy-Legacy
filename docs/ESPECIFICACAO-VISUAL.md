@@ -135,3 +135,14 @@ A interface será aprovada quando:
 - A gaveta e o dock continuam permitindo abrir aplicativos novamente após fechar suas janelas.
 
 **Verificações v0.6:** JavaScript aprovado em `node --check`; HTML analisado com o parser padrão do Python; verificações estáticas confirmaram a remoção dos controles internos e a permanência do alvo de fechamento; ZIP verificado sem erros. Teste no navegador e no Chrome 43 do SM-T280 permanece pendente.
+
+
+## 13. Ajustes do protótipo visual v0.7 — início sem janelas e ampliar por arraste (09/11/2026)
+
+- A área de trabalho inicia sem aplicativos/janelas abertos; nenhum miniaplicativo é iniciado automaticamente ao carregar a página.
+- O usuário abre um aplicativo ao tocar no respectivo ícone na área de trabalho, na gaveta ou no dock.
+- Arrastar uma janela flutuante até o limite superior da área de trabalho e soltá-la amplia o aplicativo para ocupar toda a área de trabalho, mantendo a barra superior e o dock do Galaxy Legacy visíveis.
+- Arrastar a barra superior de uma janela ampliada restaura a janela à geometria flutuante anterior e permite reposicioná-la.
+- O gesto para fechar arrastando até o alvo X inferior permanece disponível.
+
+**Verificações v0.7:** JavaScript aprovado em `node --check`; HTML analisado com o parser padrão do Python; verificações estáticas confirmaram ausência de abertura automática e presença da lógica de ampliar/restaurar; ZIP verificado sem erros. A interação visual ainda precisa ser testada em navegador real e no Chrome 43 do SM-T280.
