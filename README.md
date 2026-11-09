@@ -22,7 +22,7 @@ Projeto para investigar, documentar e desenvolver sites e aplicativos web compat
 
 - O tablet tem dificuldade para acessar alguns sites, enquanto outros ainda funcionam.
 - O Google Chrome instalado é uma versão antiga (43.0.2357.93), em Android 5.1.1.
-- Também existe outro aplicativo de navegação que a pessoa usuária chamou de “Internet Explorer”; a identidade e a versão exatas ainda precisam ser verificadas. Não presumir que seja Microsoft Internet Explorer.
+- A pessoa usuária confirmou que o segundo navegador é o Samsung Internet, reconhecido pelo ícone roxo com um planeta e anel. A versão não pôde ser consultada; não confundir esse aplicativo com o Microsoft Internet Explorer.
 - HTML continua sendo uma tecnologia utilizável; as limitações podem estar relacionadas à versão do Android, ao navegador, ao motor de renderização, a recursos de JavaScript/CSS ou a requisitos de segurança dos sites.
 - Ainda não foi realizado um diagnóstico técnico completo no aparelho. As causas específicas das falhas permanecem em aberto.
 
@@ -71,7 +71,7 @@ Os resultados devem registrar navegador, versão do Android, data do teste e res
 
 Quando possível, registrar:
 
-- Versão do outro navegador chamado de “Internet”/“Internet Explorer” (abrir o menu e procurar “Sobre” ou “Informações do aplicativo”).
+- Versão do Samsung Internet, caso seja possível encontrá-la em Configurações → Aplicativos → Internet → Informações do aplicativo.
 - Resolução da tela e quantidade de memória RAM, se identificáveis.
 - Exemplos de sites que funcionam e sites que falham, incluindo a mensagem de erro ou comportamento observado.
 
@@ -85,4 +85,4 @@ Um projeto será considerado compatível somente depois de ser aberto e testado 
 
 **Confirmado:** modelo SM-T280, Galaxy Tab A (2016), Android 5.1.1, Google Chrome 43.0.2357.93, Blink 537.36, V8 4.3.61.22, dificuldade parcial de acesso a sites e objetivos gerais.
 
-**Pendente:** identificação do outro navegador mencionado, resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade.
+**Pendente:** versão do Samsung Internet, resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade.
