@@ -157,9 +157,9 @@ A verificação foi feita nos metadados, arquivos, branches, commits e releases 
 
 ## 10. Levantamento adicional de relatos fornecido pela pessoa usuária (09/11/2026)
 
-A pessoa usuária realizou buscas complementares em fóruns e repositórios, incluindo XDA Developers e AndroidFileHost, e trouxe as seguintes conclusões. Elas são registradas como **relatos e resultados de pesquisa fornecidos pela pessoa usuária**, ainda não auditados diretamente por esta investigação.
+A pessoa usuária compartilhou mensagens e resultados de pesquisa produzidos pelo **Gemini**, que realizou buscas complementares em fóruns e repositórios, incluindo XDA Developers e AndroidFileHost. As conclusões abaixo são registradas como **informações fornecidas pelo Gemini**, ainda não auditadas diretamente por esta investigação.
 
-### LineageOS 14.1 — build indicada como funcional
+### LineageOS 14.1 — build indicada pelo Gemini como funcional
 
 - ROM indicada: **LineageOS 14.1 Unofficial**, Android 7.1.2 Nougat.
 - Desenvolvedor associado: `_mone`.
@@ -167,7 +167,7 @@ A pessoa usuária realizou buscas complementares em fóruns e repositórios, inc
 - Pasta AndroidFileHost informada: https://androidfilehost.com/?w=files&flid=165161
 - Thread XDA já identificada no levantamento do projeto: https://forum.xda-developers.com/t/rom-lineageos-14-1-samsung-galaxy-tab-a-7-0-sm-t280-gtexswifi.4158061/
 
-**Relatos informados pela pessoa usuária:**
+**Relatos apresentados pelo Gemini:**
 - Wi-Fi e Bluetooth funcionais.
 - Áudio e microfone funcionais.
 - Câmera nativa pode falhar na captura; uso de câmera de terceiros, como Open Camera, foi citado como alternativa.
@@ -177,9 +177,9 @@ A pessoa usuária realizou buscas complementares em fóruns e repositórios, inc
 
 **Estado da evidência:** esses pontos ainda precisam ser ligados às mensagens exatas, datas, versão de build e experiência de usuários do modelo SM-T280. Não foram reproduzidos em teste independente nesta investigação. Até essa conferência, tratar “estável” como avaliação comunitária relatada, não como garantia.
 
-### Resultado informado para outras versões
+### Resultado apresentado pelo Gemini para outras versões
 
-A pesquisa da pessoa usuária não encontrou builds funcionais confirmadas para:
+A pesquisa compartilhada pelo Gemini não encontrou builds funcionais confirmadas para:
 - AICP 12.1;
 - LineageOS 15.1;
 - LineageOS 16.0;
@@ -203,7 +203,7 @@ A menção a OpenGApps ARM / Android 7.1 / Pico também não constitui recomenda
 
 ## 12. Decisão de trabalho atualizada
 
-1. **Candidata principal para auditoria:** LineageOS 14.1 Unofficial build `lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip`, indicada pela pesquisa comunitária da pessoa usuária.
+1. **Candidata principal para auditoria:** LineageOS 14.1 Unofficial build `lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip`, indicada pela pesquisa compartilhada do Gemini.
 2. **Candidata secundária apenas para inspeção:** AICP 12.1 Unofficial de 13/10/2026. Não classificar como funcional até auditar o ZIP e obter relatos independentes para SM-T280.
 3. **Pistas de desenvolvimento:** trees LineageOS 15.1/16.0/17.1; não tratar seus nomes de branch como prova de ROM pronta.
 4. **Antes de instalação:** localizar relatos específicos, conferir arquivo e hash, inspecionar instalador e assert de dispositivo, validar recuperação e firmware original de retorno, e confirmar backup completo. Não alterar o tablet nesta fase.
@@ -213,7 +213,7 @@ A menção a OpenGApps ARM / Android 7.1 / Pico também não constitui recomenda
 
 ## 13. Plano de pré-recuperação e preparação antes de qualquer instalação (informações fornecidas em 09/11/2026)
 
-A pessoa usuária propôs um checklist que deverá ser avaliado antes de qualquer alteração no SM-T280. Esta seção registra o plano e acrescenta ressalvas técnicas para evitar que pré-requisitos presumidos sejam tratados como garantias.
+O Gemini propôs um checklist de preparação que foi compartilhado nesta conversa. Esta seção registra essas sugestões e acrescenta ressalvas técnicas para evitar que pré-requisitos presumidos sejam tratados como garantias.
 
 ### 13.1 Firmware original Samsung e caminho de restauração
 
@@ -280,3 +280,19 @@ A página geral de arquivos informada é https://androidfilehost.com/?w=files&fl
 | Teste de gravação/instalação | **Não realizado e não autorizado nesta etapa** |
 
 **Decisão:** a LineageOS 14.1 (build de 09/02/2021) continua sendo a primeira candidata para auditoria, mas nenhuma operação de desbloqueio, wipe ou flash deve ser iniciada até que todos os itens críticos de recuperação estejam comprovados. A regra é preservar a possibilidade de retornar ao firmware original e manter as funções essenciais do SM-T280.
+
+
+## 14. Proveniência das informações e colaboração com Gemini (09/11/2026)
+
+A pessoa usuária esclareceu que as mensagens e levantamentos detalhados sobre ROMs, relatos de usuários, FRP e checklist técnico compartilhados nesta conversa são respostas do **Gemini**, utilizado em paralelo para pesquisa e análise.
+
+Para manter uma trilha de auditoria clara, as próximas atualizações deverão distinguir:
+
+- **Gemini — pesquisa externa relatada:** informações, links, conclusões ou recomendações apresentados pelo Gemini, ainda que detalhados. Devem permanecer atribuídos a ele até serem confirmados por uma fonte primária.
+- **ChatGPT — verificação independente:** metadados, branches, arquivos, commits e releases efetivamente consultados nos repositórios pelo conector GitHub. A verificação tem escopo limitado ao conteúdo que foi realmente acessado.
+- **Confirmado por fonte primária:** conteúdo verificado diretamente na publicação, arquivo, checksum, documentação do desenvolvedor ou relato identificável do usuário do SM-T280.
+- **Pendente / não comprovado:** alegações sem evidência rastreável, downloads não inspecionados, builds sem teste no hardware ou documentação contraditória.
+
+A indicação de uma informação pelo Gemini não significa que ela esteja errada; significa apenas que sua origem deve ficar clara e que ela ainda precisa de confirmação independente. Do mesmo modo, encontrar uma árvore de código ou um pacote no GitHub não prova estabilidade em hardware.
+
+**Regra de colaboração:** usar o Gemini como segunda fonte de pesquisa e revisão, confrontar seus resultados com os repositórios e fontes primárias, registrar divergências e não elevar uma ROM a “aprovada” até que os critérios de compatibilidade e recuperação sejam comprovados.
