@@ -109,3 +109,17 @@ A direção aprovada é construir uma experiência híbrida sobre o Android orig
 - Não desbloquear bootloader, obter root, gravar partições ou instalar ROM para implementar funções que possam ser atendidas pela camada web.
 
 As decisões completas e as condições para reconsiderar mudanças profundas estão registradas em [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md). Essas diretrizes prevalecem sobre ideias exploratórias anteriores quando houver divergência.
+
+
+## 12. Escopo atual: website 100% online
+
+A decisão atual é desenvolver o Galaxy Legacy como um website inteiramente online, acessado pelo Chrome no Android original.
+
+- O site dependerá de conexão com a internet para funcionar.
+- Não será criada versão offline, pacote local, leitor offline ou instalação de aplicativos.
+- Uma futura experiência de leitura offline semelhante a um Kindle seria um projeto separado, não uma exceção ativa do Galaxy Legacy.
+- O acesso preferencial será por um ícone do site adicionado à tela inicial do Android pelo Chrome, sujeito à validação no Chrome 43 do SM-T280.
+- O objetivo visual é personalizar a própria experiência web, não substituir o launcher Android nem alterar configurações globais do sistema.
+- Nenhuma ROM, root, desbloqueio do bootloader ou gravação de partições será necessária para desenvolver a versão web.
+
+Ver [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md), que prevalecem sobre ideias de protótipos antigos quando houver divergência.
