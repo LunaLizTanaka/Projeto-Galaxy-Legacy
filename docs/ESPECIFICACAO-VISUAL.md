@@ -124,3 +124,14 @@ A interface será aprovada quando:
 - Fechar remove somente a janela/aba em execução no protótipo. O atalho do aplicativo permanece na área de trabalho e na gaveta, podendo ser aberto novamente.
 
 **Verificações v0.5:** estrutura HTML analisada pelo parser padrão do Python; JavaScript verificado com `node --check`; presença do alvo, rotina de detecção de sobreposição e rotina de fechamento conferidas estaticamente; ZIP testado sem erros. A validação do gesto por toque/mouse em navegador real e no Chrome 43 do SM-T280 permanece pendente.
+
+
+## 12. Ajuste do protótipo visual v0.6 — barra de janela simplificada (09/11/2026)
+
+- Removidos os botões internos de minimizar (−) e fechar (×) da barra de título das janelas flutuantes.
+- A barra mantém somente o ícone e o nome do aplicativo e continua sendo a área para arrastar a janela.
+- O fechamento permanece disponível pelo gesto de arrastar a janela até o alvo X inferior e soltá-la sobre ele.
+- Os controles X para fechar os painéis de Configurações e Aplicativos são independentes e permanecem disponíveis.
+- A gaveta e o dock continuam permitindo abrir aplicativos novamente após fechar suas janelas.
+
+**Verificações v0.6:** JavaScript aprovado em `node --check`; HTML analisado com o parser padrão do Python; verificações estáticas confirmaram a remoção dos controles internos e a permanência do alvo de fechamento; ZIP verificado sem erros. Teste no navegador e no Chrome 43 do SM-T280 permanece pendente.
