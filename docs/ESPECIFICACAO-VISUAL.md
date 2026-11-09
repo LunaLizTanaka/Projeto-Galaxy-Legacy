@@ -114,3 +114,13 @@ A interface será aprovada quando:
 - Os controles do painel são apenas visuais e não controlam serviços reais nem as configurações do Android.
 
 **Validação v0.4:** JavaScript verificado com `node --check`; estrutura HTML analisada com o parser padrão do Python; verificações estáticas confirmaram os dois gestos e seus respectivos painéis; ZIP testado sem erros. Chrome 43 e SM-T280 físico permanecem pendentes de teste.
+
+
+## 11. Ajuste do protótipo visual v0.5 — fechar janela por arraste (09/11/2026)
+
+- Ao iniciar o arraste pela barra de título de uma janela, aparece um alvo destacado na parte inferior: **X — Solte aqui para fechar**.
+- A janela é fechada quando é arrastada até a área do alvo e solta com o centro do alvo dentro dos limites da janela.
+- O botão X da própria barra de título continua disponível como alternativa; minimizar também permanece disponível.
+- Fechar remove somente a janela/aba em execução no protótipo. O atalho do aplicativo permanece na área de trabalho e na gaveta, podendo ser aberto novamente.
+
+**Verificações v0.5:** estrutura HTML analisada pelo parser padrão do Python; JavaScript verificado com `node --check`; presença do alvo, rotina de detecção de sobreposição e rotina de fechamento conferidas estaticamente; ZIP testado sem erros. A validação do gesto por toque/mouse em navegador real e no Chrome 43 do SM-T280 permanece pendente.
