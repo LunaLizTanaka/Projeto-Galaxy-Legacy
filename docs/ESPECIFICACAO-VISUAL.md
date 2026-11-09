@@ -177,3 +177,20 @@ Esta seção registra a decisão mais recente e prevalece sobre conceitos explor
 - A composição visual híbrida definitiva será especificada separadamente, preservando a identidade Strawberry Milk Soft e a prioridade de desempenho.
 
 **Validação pendente:** adicionar o site à tela inicial do SM-T280 e verificar se o Chrome 43 cria um atalho comum ou abre o site em modo independente. Nenhum dos comportamentos deve ser declarado confirmado antes do teste físico.
+
+
+## 16. Requisito visual — arquivos e nuvem (09/11/2026)
+
+O ambiente web deverá oferecer acesso visual a:
+- Gerenciador de arquivos da nuvem.
+- Galeria de imagens armazenadas na conta.
+- Pastas, arquivos recentes e busca/organização, conforme o desempenho permitir.
+- Ação de importar arquivos escolhidos pelo seletor do Chrome.
+- Indicador de progresso e confirmação do envio à nuvem.
+- Ações de abrir/visualizar, baixar e excluir.
+
+Os arquivos existentes no tablet só serão importados depois de seleção explícita pelo usuário. Não representar a tela do gerenciador web como se ela tivesse detectado automaticamente todo o armazenamento local, os dados de aplicativos ou o launcher Android.
+
+Os arquivos novos criados ou salvos dentro do Galaxy Legacy devem ser enviados ao armazenamento remoto da conta, após confirmação do servidor. A nuvem será privada por padrão e não poderá ser tratada como armazenamento gratuito ilimitado.
+
+Este requisito é para componentes internos do website e não implica instalar aplicativos Android.
