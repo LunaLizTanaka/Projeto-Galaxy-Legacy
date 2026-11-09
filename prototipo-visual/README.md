@@ -77,3 +77,14 @@ Primeira demonstração de janelas flutuantes com cenário maior que a tela. Ess
 A sintaxe JavaScript do v0.2 foi inspecionada com Node.js. A tentativa de executar a página no Chromium deste ambiente foi bloqueada, portanto não foi possível concluir testes funcionais automatizados nesta etapa.
 
 A compatibilidade com Chrome 43 e o desempenho no SM-T280 físico permanecem pendentes de validação. Não presumir compatibilidade antes desse teste.
+
+
+## v0.3 — gestos de borda
+
+- Removidas as frases de apresentação do topo.
+- Arrastar da borda inferior para cima abre a gaveta com aplicativos e pastas.
+- Arrastar da borda superior para baixo abre o painel rápido demonstrativo.
+- Mantidas as janelas flutuantes, pastas, páginas horizontais e dock.
+- Atalhos do painel rápido são ilustrativos e não alteram as configurações reais do Android.
+
+JavaScript validado com `node --check`, HTML analisado com o parser padrão do Python e pacote ZIP verificado. A execução no Chromium automatizado foi bloqueada pela política do ambiente; não há ainda validação de interação no navegador nem teste no SM-T280 físico.
