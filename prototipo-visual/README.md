@@ -1,23 +1,25 @@
 # Galaxy Legacy — Protótipo Visual
 
-Esta pasta reúne exclusivamente a ideia, o planejamento e os materiais do **protótipo visual** do Galaxy Legacy. Ela não representa, por enquanto, um sistema operacional, uma ROM, nem um launcher pronto para instalação.
+Esta pasta reúne exclusivamente a ideia, o planejamento e os materiais do **protótipo visual** do Galaxy Legacy. Ela não representa um sistema operacional, uma ROM ou um launcher pronto para instalação.
 
 ## Objetivo
 
-Criar uma demonstração visual navegável de um ambiente de trabalho para o tablet Samsung Galaxy Tab A 7.0 (2016), modelo **SM-T280**, sem exigir instalação no tablet. A primeira forma de visualização deverá ser uma página web leve, aberta pelo navegador Chrome.
+Criar uma demonstração visual leve para o Samsung Galaxy Tab A 7.0 (2016), modelo **SM-T280**, com abertura pelo navegador e sem exigir instalação no tablet.
 
-## Conceito da interface
+## Conceito: desktop + Android
 
-O protótipo deverá explorar uma área de trabalho com:
+A experiência combina elementos de computador com a organização de uma tela inicial Android:
 
-- Janelas flutuantes que permitem visualizar vários miniaplicativos na mesma tela.
-- Janelas que possam ser movidas e organizadas pelo usuário.
-- Uma área de trabalho/cenário maior que a tela, navegável por gestos de arrastar.
-- Alguns painéis ou janelas que possam ficar fixados nas bordas enquanto o cenário se movimenta.
-- Uma barra de atalhos e áreas para widgets e aplicativos demonstrativos.
-- Uma aparência de ambiente próprio, e não apenas uma grade convencional de ícones.
+- Área de trabalho em tela cheia, adaptada ao espaço disponível.
+- Páginas horizontais: deslizar para a esquerda/direita troca a página, sem precisar arrastar um cenário gigante para encontrar atalhos.
+- Ícones de aplicativos diretamente na área de trabalho.
+- Pastas para agrupar aplicativos e atalhos.
+- Aplicativos demonstrativos abertos em janelas flutuantes independentes.
+- Várias janelas podem permanecer abertas, ser movidas e organizadas; também podem ser minimizadas ou fechadas.
+- Dock fixo para atalhos frequentes, recuperação de janelas e navegação entre páginas.
+- Janelas abertas permanecem disponíveis ao trocar de página.
 
-As janelas do protótipo serão demonstrações visuais. Não se deve sugerir que aplicativos Android reais estejam sendo executados dentro delas.
+As janelas e aplicativos do protótipo são demonstrações visuais. Não representam aplicativos Android reais em execução dentro delas e não acessam os dados ou serviços do tablet.
 
 ## Identidade visual aprovada
 
@@ -30,18 +32,18 @@ As janelas do protótipo serão demonstrações visuais. Não se deve sugerir qu
   - Lilás: `#E8D5EA`
   - Malva: `#B68D9A`
 
-Usar fundos suaves, detalhes discretos e contraste suficiente para leitura na tela de 800 × 1280. A paleta deve ser aplicada sem depender de efeitos gráficos pesados.
+Usar fundos suaves, detalhes discretos e contraste suficiente para leitura na tela de 800 × 1280.
 
 ## Requisitos de desempenho e compatibilidade
 
 O hardware é limitado (1,5 GB de RAM e 8 GB de armazenamento interno). O protótipo deve priorizar fluidez e baixo consumo:
 
-- Preferir HTML, CSS e JavaScript simples, sem frameworks ou dependências pesadas quando não forem necessários.
-- Não usar vídeo de fundo, animações contínuas, blur, filtros pesados ou transparências complexas.
+- Preferir HTML, CSS e JavaScript simples, sem frameworks ou dependências pesadas.
+- Evitar vídeos de fundo, animações contínuas, blur, filtros pesados e transparências complexas.
 - Preferir imagens estáticas, pequenas e otimizadas.
 - Atualizar relógios e elementos dinâmicos apenas quando necessário.
 - Evitar processos em segundo plano e trabalho desnecessário.
-- Projetar para a resolução de 800 × 1280 e testar a responsividade.
+- Projetar para a resolução de 800 × 1280 e adaptar a interface a outras dimensões.
 - Considerar o Chrome 43 identificado no tablet; evitar APIs e recursos modernos sem alternativa compatível.
 - Não economizar recursos desativando ou prejudicando funções essenciais do Android.
 
@@ -51,15 +53,27 @@ Este espaço é dedicado ao protótipo visual. A investigação de ROMs, recuper
 
 O protótipo web não substitui o Android, não altera Bluetooth, Wi-Fi, notificações ou serviços do sistema e não aumenta a capacidade física do hardware.
 
-## Etapas sugeridas
+## Versões
 
-1. Criar um mockup estático da área de trabalho.
-2. Validar a hierarquia visual, cores, tamanhos e legibilidade.
-3. Implementar interação leve para mover e organizar janelas.
-4. Implementar navegação por arraste do cenário, mantendo os painéis fixados quando aplicável.
-5. Testar no Chrome disponível e reduzir qualquer recurso que cause lentidão.
-6. Só depois de aprovado, decidir separadamente se vale transformar o conceito em um launcher nativo.
+### v0.2 — conceito híbrido
+
+- Área de trabalho em tela cheia.
+- Duas páginas horizontais.
+- Ícones de aplicativos e pastas.
+- Janelas flutuantes independentes, com movimentação, minimização e fechamento.
+- Dock fixo para atalhos e navegação.
+- Arquivos locais entregues em HTML e ZIP.
+
+### v0.1 — primeira exploração
+
+Primeira demonstração de janelas flutuantes com cenário maior que a tela. Essa navegação foi substituída pela navegação por páginas horizontais; as janelas flutuantes foram mantidas.
 
 ## Regra de prioridade
 
 **Desempenho, estabilidade e preservação das funções essenciais vêm antes de efeitos visuais ou quantidade de recursos.** Qualquer elemento opcional que prejudique a fluidez deverá ser simplificado ou removido.
+
+## Validação
+
+A sintaxe JavaScript do v0.2 foi inspecionada com Node.js. A tentativa de executar a página no Chromium deste ambiente foi bloqueada, portanto não foi possível concluir testes funcionais automatizados nesta etapa.
+
+A compatibilidade com Chrome 43 e o desempenho no SM-T280 físico permanecem pendentes de validação. Não presumir compatibilidade antes desse teste.
