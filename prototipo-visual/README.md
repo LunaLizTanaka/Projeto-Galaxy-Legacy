@@ -88,3 +88,14 @@ A compatibilidade com Chrome 43 e o desempenho no SM-T280 físico permanecem pen
 - Atalhos do painel rápido são ilustrativos e não alteram as configurações reais do Android.
 
 JavaScript validado com `node --check`, HTML analisado com o parser padrão do Python e pacote ZIP verificado. A execução no Chromium automatizado foi bloqueada pela política do ambiente; não há ainda validação de interação no navegador nem teste no SM-T280 físico.
+
+
+## v0.4 — configurações no gesto superior
+
+- Arrastar do topo para baixo abre o painel **Configurações**, inspirado nas configurações rápidas do Android.
+- Inclui atalhos demonstrativos, controles visuais de brilho/volume e botão para abrir os ajustes do Galaxy Legacy.
+- Arrastar de baixo para cima continua abrindo a gaveta de aplicativos e pastas.
+- Mantidas páginas horizontais, ícones, pastas, dock e janelas flutuantes.
+- Os controles não alteram configurações reais do Android.
+
+JavaScript verificado com `node --check`, HTML analisado pelo parser padrão do Python e verificações estáticas dos gestos concluídas; ZIP testado sem erros. A validação no Chrome 43 e no SM-T280 físico permanece pendente.
