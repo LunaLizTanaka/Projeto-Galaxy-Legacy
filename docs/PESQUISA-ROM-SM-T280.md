@@ -153,3 +153,59 @@ A prioridade continua sendo uma ROM gratuita, específica para SM-T280, estável
 ## 9. Limites desta investigação
 
 A verificação foi feita nos metadados, arquivos, branches, commits e releases públicos do GitHub em 09/11/2026. A página XDA anteriormente identificada não foi revalidada nesta etapa. O conteúdo binário do ZIP AICP também não foi inspecionado, não houve compilação, teste em emulador ou teste físico. As conclusões indicam o estado da evidência disponível, não garantias de funcionamento.
+
+
+## 10. Levantamento adicional de relatos fornecido pela pessoa usuária (09/11/2026)
+
+A pessoa usuária realizou buscas complementares em fóruns e repositórios, incluindo XDA Developers e AndroidFileHost, e trouxe as seguintes conclusões. Elas são registradas como **relatos e resultados de pesquisa fornecidos pela pessoa usuária**, ainda não auditados diretamente por esta investigação.
+
+### LineageOS 14.1 — build indicada como funcional
+
+- ROM indicada: **LineageOS 14.1 Unofficial**, Android 7.1.2 Nougat.
+- Desenvolvedor associado: `_mone`.
+- Build indicada como última estável: `lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip`.
+- Pasta AndroidFileHost informada: https://androidfilehost.com/?w=files&flid=165161
+- Thread XDA já identificada no levantamento do projeto: https://forum.xda-developers.com/t/rom-lineageos-14-1-samsung-galaxy-tab-a-7-0-sm-t280-gtexswifi.4158061/
+
+**Relatos informados pela pessoa usuária:**
+- Wi-Fi e Bluetooth funcionais.
+- Áudio e microfone funcionais.
+- Câmera nativa pode falhar na captura; uso de câmera de terceiros, como Open Camera, foi citado como alternativa.
+- Suspensão e tela funcional; foram mencionadas correções relacionadas ao carregamento com a tela desligada.
+- Boa estabilidade após a configuração inicial, sem reinicializações aleatórias ou travamentos frequentes nos relatos consultados.
+- Suporte para formatar cartão microSD como armazenamento interno na build indicada.
+
+**Estado da evidência:** esses pontos ainda precisam ser ligados às mensagens exatas, datas, versão de build e experiência de usuários do modelo SM-T280. Não foram reproduzidos em teste independente nesta investigação. Até essa conferência, tratar “estável” como avaliação comunitária relatada, não como garantia.
+
+### Resultado informado para outras versões
+
+A pesquisa da pessoa usuária não encontrou builds funcionais confirmadas para:
+- AICP 12.1;
+- LineageOS 15.1;
+- LineageOS 16.0;
+- LineageOS 17.1.
+
+Essa conclusão deve ser interpretada como **ausência de ROM funcional confirmada nos fóruns consultados pela pessoa usuária**, e não como prova de inexistência de qualquer árvore de código.
+
+### Reconciliação com a verificação do GitHub desta pesquisa
+
+A verificação direta de metadados públicos do GitHub havia localizado:
+- Uma publicação não oficial AICP 12.1 com ZIP de nome `aicp_gtexswifi_n-12.1-UNOFFICIAL-20261013.zip`, junto a uma árvore de produto que declara SM-T280. Isso prova que a publicação e a configuração de produto existem no GitHub; não prova que o ZIP seja uma compilação funcional, segura ou validada por terceiros.
+- Uma árvore de dispositivo com branch `lineage-16` que declara `TARGET_OTA_ASSERT_DEVICE := SM-T280,gtexswifi`. Isso prova a presença de código de desenvolvimento associado ao nome do dispositivo; não prova a existência de uma ROM compilada, inicializável ou funcional.
+
+Portanto, a conclusão prudente é: **LineageOS 14.1 é a candidata com relatos de uso e uma build específica apontada pela pesquisa comunitária fornecida; AICP 12.1 e as branches LineageOS mais novas permanecem pistas não validadas.** A afirmação “não existe árvore de código posterior” não deve ser usada, pois foram encontradas branches de desenvolvimento. O que ainda não foi comprovado é uma versão posterior instalável e funcional no SM-T280.
+
+## 11. Aviso de segurança sobre FRP e instalação de complementos
+
+O levantamento fornecido menciona contornar o FRP por edição de `build.prop` ou ferramentas de terceiros. **Essas sugestões não são aprovadas nem devem ser seguidas.** FRP é uma proteção antirroubo do Android. Não editar propriedades do sistema nem utilizar ferramentas para contornar esse bloqueio. Em caso de bloqueio, usar a recuperação oficial da conta Google anteriormente vinculada ou suporte autorizado da Samsung.
+
+A menção a OpenGApps ARM / Android 7.1 / Pico também não constitui recomendação de instalação automática. A compatibilidade de arquitetura, versão Android, espaço de partição, pacote, recuperação e procedência deve ser verificada para a build concreta; qualquer complemento adicional aumenta o risco e consome armazenamento. Não instalar GApps ou outros ZIPs antes da auditoria do sistema-base.
+
+## 12. Decisão de trabalho atualizada
+
+1. **Candidata principal para auditoria:** LineageOS 14.1 Unofficial build `lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip`, indicada pela pesquisa comunitária da pessoa usuária.
+2. **Candidata secundária apenas para inspeção:** AICP 12.1 Unofficial de 13/10/2026. Não classificar como funcional até auditar o ZIP e obter relatos independentes para SM-T280.
+3. **Pistas de desenvolvimento:** trees LineageOS 15.1/16.0/17.1; não tratar seus nomes de branch como prova de ROM pronta.
+4. **Antes de instalação:** localizar relatos específicos, conferir arquivo e hash, inspecionar instalador e assert de dispositivo, validar recuperação e firmware original de retorno, e confirmar backup completo. Não alterar o tablet nesta fase.
+
+**Estado final:** LineageOS 14.1 é a primeira candidata para investigação detalhada, mas ainda não está formalmente aprovada para instalação. A prioridade continua sendo preservar o funcionamento do SM-T280 e evitar qualquer procedimento de contorno de proteção antirroubo.
