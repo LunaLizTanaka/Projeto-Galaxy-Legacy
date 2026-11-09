@@ -171,3 +171,73 @@ A avaliação de ROM permanece aberta, mas nenhuma ROM foi aprovada para instala
 A ROM não deve ser instalada apenas para remover um aviso sem entender sua causa. Uma ROM diferente não garante a remoção de certificados, VPNs ou políticas de administração, e pode introduzir outros defeitos.
 
 **Estado:** investigação de manutenção/ROM reaberta; diagnóstico dos avisos pendente; instalação, desbloqueio, root e gravação continuam não autorizados.
+
+
+## 11. Gerenciador de arquivos e nuvem Galaxy Legacy
+
+A pessoa responsável deseja que o Galaxy Legacy tenha um espaço de arquivos integrado ao website, com uma nuvem própria para armazenar o conteúdo guardado dentro do ambiente.
+
+### 11.1 O que será armazenado na nuvem
+
+- Arquivos criados dentro do próprio Galaxy Legacy.
+- Imagens geradas, editadas ou salvas dentro do ambiente.
+- Arquivos que a pessoa usuária selecionar e importar do tablet.
+- Metadados de organização, como nome, tipo, data de envio, pastas e miniaturas, quando aplicável.
+
+Os arquivos enviados deverão ficar em armazenamento remoto privado associado à conta da pessoa usuária. O website deverá listar, visualizar, abrir, baixar, organizar e excluir somente os arquivos aos quais a conta autenticada tenha acesso.
+
+Tudo que for criado ou salvo dentro do próprio Galaxy Legacy deverá ser enviado ao armazenamento remoto quando a ação for confirmada e a conexão estiver disponível. A aplicação deverá mostrar claramente o estado do envio e não indicar que o arquivo está salvo na nuvem antes da confirmação do servidor.
+
+### 11.2 Importação de arquivos que já existem no tablet
+
+A intenção é permitir importar fotos, imagens, documentos e outros arquivos existentes no SM-T280 para a nuvem do Galaxy Legacy.
+
+No Chrome 43, a importação deve usar o seletor de arquivos do navegador (por exemplo, HTML `input type="file"`). O usuário precisa tocar em Importar e escolher os arquivos. A seleção múltipla deverá ser testada no dispositivo.
+
+**Limite obrigatório:** um website não pode examinar automaticamente todo o armazenamento Android, enumerar todas as pastas, ler todos os arquivos ou copiar o conteúdo inteiro sem seleção e autorização da pessoa usuária.
+
+O navegador também não pode, por conta própria:
+- Ler dados privados de outros aplicativos.
+- Copiar configurações, dados internos ou bancos de dados dos aplicativos.
+- Examinar a tela inicial do launcher Android, seus widgets, ícones ou papel de parede.
+- Ler livremente arquivos de sistema ou diretórios protegidos.
+
+A API File System Access, que em navegadores compatíveis pode permitir que o usuário selecione um diretório e que a página liste seu conteúdo após autorização, tornou-se estável no Chrome 86. Ela não existe no Chrome 43 instalado no SM-T280. Portanto, não planejar importação automática de pastas inteiras no aparelho-alvo.
+
+A importação deverá ser explícita, transparente e limitada aos arquivos escolhidos. Se a pessoa usuária desejar arquivar uma captura de tela da tela inicial Android, ela poderá criar a captura usando o próprio sistema e selecioná-la para envio; o website não poderá inspecionar o launcher diretamente.
+
+### 11.3 Armazenamento remoto e segurança
+
+A nuvem deverá ser implementada por um serviço de armazenamento remoto, associado a uma camada de autenticação e a um índice de metadados.
+
+Requisitos:
+- HTTPS para comunicação.
+- Autenticação individual.
+- Arquivos privados por padrão; não usar buckets públicos para arquivos pessoais.
+- Regras de autorização que impeçam uma conta de ler ou alterar arquivos de outra.
+- Segredos administrativos mantidos no servidor, nunca no HTML/JavaScript público.
+- Limites de tamanho e tipos aceitos.
+- Barra de progresso e tratamento de falhas de conexão.
+- Verificação de upload concluído antes de apresentar o arquivo como salvo.
+- Opções para baixar, excluir e exportar dados.
+- Informação clara sobre cota de armazenamento, tráfego e eventuais limites do plano gratuito.
+
+Não prometer armazenamento gratuito ilimitado. O provedor e a arquitetura de nuvem serão escolhidos depois de comparar quotas, custos, segurança, facilidade de integração e compatibilidade com a infraestrutura existente.
+
+### 11.4 Experiência visual
+
+A interface web poderá incluir:
+- Gerenciador de arquivos.
+- Galeria de imagens.
+- Pastas e organização.
+- Área de arquivos recentes.
+- Indicador de espaço utilizado na nuvem.
+- Estado de sincronização/envio.
+- Ações de importar, visualizar, baixar e excluir.
+
+Esses recursos são componentes do website, não aplicativos Android instalados.
+
+### 11.5 Estado
+
+**Requisito solicitado e registrado; não implementado.** A importação de arquivos existentes depende de seleção explícita no Chrome 43. A cópia automática de todo o armazenamento, de dados privados de aplicativos ou do launcher Android não é possível dentro do escopo exclusivamente web.
+
