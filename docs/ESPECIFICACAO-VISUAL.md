@@ -92,3 +92,14 @@ A interface será aprovada quando:
 **Verificações realizadas:** inspeção sintática do JavaScript com Node.js. A tentativa de executar o protótipo em Chromium neste ambiente foi bloqueada pelo ambiente de execução; portanto, não há validação funcional de navegador concluída nesta etapa.
 
 **Ainda não validado:** Chrome 43 e desempenho no SM-T280 físico. Não declarar compatibilidade antes do teste no próprio tablet.
+
+
+## 9. Ajustes do protótipo visual v0.3 (09/11/2026)
+
+- Removidos os textos de apresentação/slogan do topo da área de trabalho; mantidos a identidade Galaxy Legacy, o relógio e a área de trabalho.
+- Adicionada uma gaveta de aplicativos e pastas, aberta ao arrastar da borda inferior para cima.
+- Adicionado um painel rápido superior, aberto ao arrastar da borda superior para baixo, com relógio, data, notificações ilustrativas e atalhos visuais.
+- Os atalhos de Wi-Fi, Bluetooth, Não perturbe e rotação são apenas demonstrações; não controlam serviços ou configurações Android.
+- O painel de aplicativos permite iniciar os miniaplicativos em janelas flutuantes, sem eliminar a área de trabalho nem o dock.
+
+**Validação v0.3:** JavaScript verificado com `node --check`; HTML analisado pelo parser padrão do Python; ZIP verificado sem erros. A execução automatizada no Chromium foi bloqueada pela política do ambiente (`ERR_BLOCKED_BY_ADMINISTRATOR`), portanto a interação por gestos ainda não foi testada em navegador real. Chrome 43 e SM-T280 físico permanecem pendentes.
