@@ -162,3 +162,18 @@ A interface será aprovada quando:
 **Distinção de tela cheia:** CSS pode preencher o viewport da página, mas não pode obrigar o Chrome a esconder sua própria barra de endereço e seus controles. A experiência de aplicativo independente depende de publicação em HTTPS, suporte do navegador ao manifesto e adição à tela inicial; a API de tela cheia depende igualmente de suporte do navegador. Compatibilidade imersiva com Chrome 43/Android 5.1.1 não está confirmada.
 
 **Verificações v0.8:** JavaScript validado com `node --check`, HTML analisado com o parser padrão do Python, manifesto JSON validado e pacote ZIP verificado. A execução visual no Chromium do ambiente não foi concluída; não há teste no SM-T280 físico.
+
+
+## 15. Revisão de escopo — experiência web online (09/11/2026)
+
+Esta seção registra a decisão mais recente e prevalece sobre conceitos exploratórios anteriores quando houver divergência.
+
+- Galaxy Legacy será um website 100% online, aberto pelo Chrome no SM-T280.
+- Não haverá modo offline, pacote local, leitor de arquivos offline ou instalação de aplicativos adicionais.
+- O website poderá ter um ícone na tela inicial do Android, criado pelo recurso de adicionar site à tela inicial do Chrome, se o comportamento for confirmado no aparelho.
+- O manifesto poderá ser usado para definir identidade, ícones, endereço inicial e modo de abertura independente, sujeito ao teste no Chrome 43.
+- A personalização visual se limita à experiência web e à apresentação do atalho. O website não controla o launcher Android, papel de parede, tela de bloqueio, barra de status, notificações ou configurações globais.
+- O visual final não deve ser presumido como desktop de PC. Os conceitos de desktop, janelas flutuantes, gaveta de aplicativos e miniaplicativos dos protótipos v0.1–v0.8 permanecem como histórico de exploração, não como requisitos automaticamente aprovados para a versão atual.
+- A composição visual híbrida definitiva será especificada separadamente, preservando a identidade Strawberry Milk Soft e a prioridade de desempenho.
+
+**Validação pendente:** adicionar o site à tela inicial do SM-T280 e verificar se o Chrome 43 cria um atalho comum ou abre o site em modo independente. Nenhum dos comportamentos deve ser declarado confirmado antes do teste físico.
