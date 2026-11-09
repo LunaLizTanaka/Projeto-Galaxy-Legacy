@@ -241,3 +241,54 @@ Esses recursos são componentes do website, não aplicativos Android instalados.
 
 **Requisito solicitado e registrado; não implementado.** A importação de arquivos existentes depende de seleção explícita no Chrome 43. A cópia automática de todo o armazenamento, de dados privados de aplicativos ou do launcher Android não é possível dentro do escopo exclusivamente web.
 
+
+
+## 12. Histórico do Chrome, favoritos e atalhos da tela inicial
+
+A pessoa responsável deseja que o website Galaxy Legacy apresente, quando possível, o histórico do Chrome e os sites que já adicionou à tela inicial do Android, usando somente os dados da conta presente no tablet.
+
+### 12.1 Limites técnicos obrigatórios
+
+Um website comum não pode ler o banco de histórico privado do Chrome, os favoritos sincronizados ou os atalhos criados no launcher Android. Fazer login no website com a mesma conta Google não concede essas permissões.
+
+A API `chrome.history` é uma API de extensão, não uma API web. O Chrome para Android não oferece suporte às extensões tradicionais. Portanto, não planejar ler o histórico diretamente pelo JavaScript do website.
+
+Os atalhos criados pelo comando do Chrome para adicionar um site à tela inicial são registrados como atalhos no launcher Android. Não existe uma API web pública para enumerar automaticamente essa lista a partir do website.
+
+### 12.2 Google Data Portability API
+
+A Data Portability API do Google oferece grupos de exportação para histórico do Chrome, favoritos e algumas configurações/dados de apps web, mediante autorização OAuth e processo de arquivo de exportação.
+
+O escopo de histórico do Chrome é restrito. A documentação oficial do Google informa expressamente que a Data Portability API não dá suporte a contas de usuários menores de 18 anos. Portanto, esse caminho não pode ser utilizado para automatizar a leitura da conta da pessoa responsável por este projeto. Não tentar contornar essa restrição.
+
+Fontes:
+- Google Data Portability API — visão geral e elegibilidade: https://developers.google.com/data-portability/user-guide/overview
+- Escopos OAuth do Chrome: https://developers.google.com/data-portability/user-guide/scopes
+- Esquema de exportação do Chrome: https://developers.google.com/data-portability/schema-reference/chrome
+- Chrome History API (extensões): https://developer.chrome.com/docs/extensions/reference/api/history
+
+### 12.3 Alternativa web segura
+
+O website poderá oferecer uma seção de sites e histórico com:
+- Sites adicionados manualmente à área de favoritos do Galaxy Legacy.
+- Importação manual de uma lista de favoritos HTML, caso a pessoa usuária tenha uma exportação legitimamente disponível para sua conta e escolha enviá-la.
+- Importação de um arquivo de histórico exportado, se houver um arquivo obtido por um recurso oficial disponível à conta e a pessoa usuária autorizar sua seleção.
+- Abertura de uma orientação para consultar o histórico diretamente no Chrome.
+
+O website não deve afirmar que essas listas representam automaticamente todos os atalhos da tela inicial Android ou todo o histórico sincronizado da conta. Deve mostrar a origem dos dados, a data da importação e se a lista está incompleta ou desatualizada.
+
+O histórico e os endereços visitados são dados pessoais sensíveis. Por padrão, não enviar o histórico de navegação para a Galaxy Legacy Cloud. Uma eventual importação deve ser iniciada conscientemente, mostrar quais dados serão lidos e pedir consentimento separado antes de qualquer envio ao servidor.
+
+Nunca solicitar senha do Google, cookies, tokens copiados manualmente ou códigos de autenticação. A autenticação deve usar somente fluxos oficiais e escopos mínimos; o acesso à Data Portability API permanece indisponível para a conta em questão.
+
+### 12.4 Estado
+
+**Objetivo solicitado:** apresentar histórico e atalhos/sítios associados ao Chrome da conta no tablet.
+
+**Automação direta no Chrome 43:** não disponível por website.
+
+**Leitura automática dos atalhos do launcher Android:** não disponível por website.
+
+**Data Portability API para a conta deste projeto:** inelegível por restrição etária documentada pelo Google.
+
+**Alternativa aprovada para investigação:** lista de sites mantida dentro do Galaxy Legacy e importação manual de arquivos de favoritos/histórico somente quando uma exportação oficial estiver disponível e for escolhida pela pessoa usuária. O histórico não será enviado à nuvem por padrão.
