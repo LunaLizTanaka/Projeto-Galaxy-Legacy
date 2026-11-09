@@ -1,18 +1,20 @@
 # Diretrizes de arquitetura, escopo e segurança — Galaxy Legacy
 
-**Data de aprovação:** 09/11/2026  
+**Data da revisão:** 09/11/2026  
 **Dispositivo-alvo:** Samsung Galaxy Tab A 7.0 (2016), SM-T280 / gtexswifi  
-**Estado:** diretrizes aprovadas pela pessoa responsável pelo projeto
+**Estado:** escopo aprovado pela pessoa responsável pelo projeto
 
-Este documento registra decisões de escopo que prevalecem sobre ideias exploratórias anteriores quando houver divergência.
+Este documento registra as decisões atuais do projeto. Ele prevalece sobre ideias e protótipos exploratórios anteriores quando houver divergência.
 
-## 1. Objetivo correto do Galaxy Legacy
+## 1. Objetivo do Galaxy Legacy
 
-O Galaxy Legacy **não tem como objetivo transformar o tablet em um computador**, nem reproduzir integralmente um desktop de PC.
+O Galaxy Legacy será uma **experiência híbrida de interface construída como website**, acessada pelo Google Chrome no Android original.
 
-O objetivo é criar uma **experiência híbrida**, acrescentando uma camada própria de interface e organização sobre o Android original, sem substituir ou comprometer desnecessariamente o sistema existente.
+O projeto não pretende transformar o tablet em um computador, criar uma distribuição Linux, substituir o Android por ChromeOS ou simular que o navegador é um sistema operacional completo.
 
-O Android continua sendo o sistema operacional-base. O Galaxy Legacy deve coexistir com ele, respeitando seus recursos, limites e configurações.
+A proposta atual é personalizar a experiência visual e a organização da interface web que o usuário acessa no tablet, mantendo o Android original como sistema operacional e preservando as funções nativas do aparelho.
+
+A composição visual final ainda deverá ser detalhada. Não assumir que todos os elementos dos protótipos antigos — como desktop tradicional de PC, janelas independentes, gaveta de aplicativos ou loja — continuam sendo requisitos aprovados.
 
 ## 2. Regra permanente de segurança
 
@@ -27,89 +29,120 @@ Por padrão:
 - Não gravar partições, alterar recovery ou modificar o kernel.
 - Não realizar wipe ou restauração de fábrica para fins de desenvolvimento.
 - Não desativar mecanismos de segurança nem serviços essenciais.
-- Não sugerir procedimentos arriscados quando uma solução web ou uma configuração comum do Android for suficiente.
+- Não sugerir procedimentos arriscados quando uma solução web ou configuração normal do Android for suficiente.
 
-Uma modificação profunda só poderá ser reconsiderada se houver uma necessidade funcional comprovada, uma justificativa técnica clara, autorização expressa e um plano de recuperação adequado. A existência de uma ROM mais recente, por si só, não justifica sua instalação.
+Uma modificação profunda só poderá ser reconsiderada se houver uma necessidade funcional comprovada, justificativa técnica clara, autorização expressa e plano de recuperação adequado. A existência de uma ROM mais recente, por si só, não justifica sua instalação.
 
-## 3. Política de aplicativos
+## 3. Modelo de funcionamento: 100% online
 
-A intenção atual é **não instalar aplicativos adicionais no tablet**.
+A versão atual do Galaxy Legacy será inteiramente online.
 
-O Galaxy Legacy não deverá evoluir para uma loja de APKs, um catálogo de aplicativos Android, um gerenciador de pacotes ou uma plataforma que exija a instalação de vários programas.
+- O website será hospedado em um serviço web e acessado pela internet.
+- A conexão será necessária para carregar e utilizar o Galaxy Legacy.
+- Conteúdo, páginas e funcionalidades deverão ser disponibilizados online.
+- Não haverá requisito de funcionamento sem internet.
+- Não será criada uma versão local para instalação, cópia por USB ou transferência por Bluetooth.
+- Não desenvolver cache offline intencional, pacote offline, instalador local ou modo offline como parte do escopo.
+- O cache normal e automático do navegador não deverá ser tratado como garantia de funcionamento offline.
 
-A exceção que poderá ser avaliada separadamente é um leitor offline leve, destinado exclusivamente à leitura de arquivos locais. Essa exceção não está automaticamente aprovada como APK: primeiro devem ser avaliadas as possibilidades de leitura pelo próprio navegador e pelos recursos já existentes no Android.
+O desenvolvimento deve priorizar uma aplicação web tradicional, leve e compatível com o Chrome do dispositivo. Recursos de PWA ou manifesto poderão ser usados somente quando contribuírem para a abertura do site pela tela inicial e forem comprovadamente compatíveis; não serão usados para criar uma estratégia offline.
 
-Não planejar importação de pacotes de aplicativos internos, instalação de APKs em lote ou transferência de aplicativos como funcionalidade central.
+## 4. Acesso pela tela inicial do Android
 
-## 4. Direção online: experiência 100% web
+O caminho preferencial será usar o recurso do Chrome para adicionar o site à tela inicial.
 
-Quando conectado à internet, o Galaxy Legacy deverá priorizar uma experiência 100% web, acessada pelo Google Chrome.
+A intenção é que o usuário tenha um ícone do Galaxy Legacy no launcher Android e possa abrir o website por ele, como uma entrada dedicada.
 
-Os sites poderão ser adicionados à tela inicial usando a funcionalidade do Chrome de criar atalhos para páginas. Esses atalhos devem ser tratados como formas de abrir sites, não como prova de que o Chrome transformou cada site em um aplicativo Android nativo.
+O manifesto web poderá declarar nome, ícones, URL inicial e modo de exibição independente, se o teste confirmar que o Chrome 43 do SM-T280 aceita esse comportamento. A documentação de exemplo do Chrome indica suporte a manifestos e ao fluxo “Add to homescreen” desde Chrome 39, mas isso não substitui o teste no aparelho real.
 
-A experiência online deve:
+Devem ser diferenciados três comportamentos:
 
-- Ser implementada com tecnologias web compatíveis com o Chrome instalado no SM-T280.
-- Usar páginas e serviços web, sem exigir APKs adicionais.
-- Permitir atalhos de sites na tela inicial quando o navegador oferecer essa função.
-- Preservar o acesso normal ao Android e ao próprio Chrome.
-- Ser leve, responsiva e adequada à tela de 800 × 1280.
-- Não depender de recursos modernos de PWA, WebAPK ou Service Worker sem teste explícito no Chrome 43.0.2357.93.
+1. **Atalho comum:** cria um ícone que abre o endereço em uma aba normal do Chrome.
+2. **Abertura independente:** o Chrome abre o site sem a interface normal de navegação, conforme o suporte do navegador e o manifesto.
+3. **Aplicativo Android nativo:** APK instalado no sistema. Isso não faz parte do escopo.
 
-A criação de atalhos na tela inicial deverá ser testada no dispositivo real antes de ser documentada como comportamento garantido. Caso o Chrome abra o site em uma aba normal, isso será aceito como comportamento do atalho; não se deve prometer uma janela independente ou modo standalone sem comprovação.
+Não prometer o segundo comportamento antes de testá-lo no SM-T280. Se o Chrome 43 oferecer apenas um atalho comum, esse resultado será avaliado sem tentar contornar as limitações do navegador.
 
-## 5. Direção offline: escopo limitado
+## 5. Limites de personalização do dispositivo
 
-O modo offline não precisa reproduzir todas as funções online.
+O Galaxy Legacy poderá personalizar a aparência e o comportamento **da própria experiência web**: cores, tipografia, ícones do site, composição visual, navegação, páginas, conteúdo e apresentação responsiva.
 
-A necessidade offline identificada é principalmente consultar arquivos locais, especialmente para leitura. Um leitor offline leve poderá ser investigado como exceção, depois de verificar quais formatos de arquivo são realmente necessários e quais recursos já estão disponíveis no Android ou no navegador.
+Também poderá fornecer nome, ícone e endereço de início para o atalho do Chrome, dentro das capacidades confirmadas do navegador.
 
-Não ampliar o modo offline para uma coleção de aplicativos sem necessidade demonstrada.
+Um website não pode, por si só, substituir o launcher Android nem alterar livremente elementos globais do sistema, como:
 
-## 6. O que significa “híbrido” neste projeto
+- Papel de parede do Android.
+- Tela de bloqueio.
+- Barra de status e área de notificações do sistema.
+- Barra de navegação do Android.
+- Configurações de Wi-Fi, Bluetooth, som ou bateria.
+- Permissões, serviços e aplicativos instalados.
 
-“Híbrido” significa uma camada de interface e organização que combina a identidade e alguns comportamentos planejados do Galaxy Legacy com a continuidade do Android original.
+Não apresentar controles ilustrativos do site como se controlassem essas funções reais. Alterações globais que dependam das configurações do Android permanecem fora da implementação web.
 
-Não significa:
+O objetivo é personalizar a experiência acessada pelo ícone do Galaxy Legacy, e não substituir ou modificar a aparência global do Android.
 
-- Converter o tablet em um PC.
-- Substituir Android por ChromeOS.
-- Criar uma distribuição Linux.
-- Simular que páginas web são aplicativos Android nativos.
-- Substituir controles reais do sistema por botões apenas decorativos.
-- Exigir janelas flutuantes externas quando o sistema original não oferecer suporte.
+## 6. Política de aplicativos e conteúdo offline
 
-Recursos de aparência, atalhos e navegação web devem ser distinguidos de integrações reais com o sistema. Wi-Fi, Bluetooth, notificações, permissões, armazenamento e outras funções Android não podem ser apresentados como controlados pelo Galaxy Legacy sem integração e teste reais.
+O escopo atual **não prevê instalar aplicativos adicionais no tablet**.
+
+O Galaxy Legacy não deverá incluir:
+
+- Loja de APKs.
+- Catálogo para instalar aplicativos Android.
+- Gerenciador de pacotes.
+- Importação de aplicativos por USB ou Bluetooth.
+- Instalação de módulos locais.
+- Biblioteca de aplicações offline.
+
+Também não haverá leitor offline de arquivos nesta versão. Uma ideia futura de dispositivo ou experiência dedicada à leitura — semelhante a um Kindle — deverá ser tratada como projeto separado, caso seja retomada. Ela não é uma exceção ativa do Galaxy Legacy.
+
+O Galaxy Legacy poderá apresentar conteúdo web de leitura quando conectado à internet, mas não deverá prometer abrir arquivos locais ou funcionar sem conexão.
 
 ## 7. Compatibilidade e implementação
 
-O dispositivo prioritário continua sendo o SM-T280, Android 5.1.1, com Google Chrome 43.0.2357.93.
+O alvo prioritário continua sendo:
 
-O desenvolvimento deve priorizar HTML, CSS e JavaScript conservadores, com baixo consumo de RAM, CPU, armazenamento e bateria. Recursos modernos não devem ser presumidos como disponíveis.
+- Samsung Galaxy Tab A 7.0 (2016).
+- Modelo SM-T280 / gtexswifi.
+- Android 5.1.1.
+- Google Chrome 43.0.2357.93.
+- Tela de 800 × 1280.
 
-A inspeção de código, testes em computadores ou emuladores e validações automatizadas ajudam, mas não substituem testes no tablet físico.
+O desenvolvimento deverá:
 
-A interface web pode ser desenvolvida e testada sem modificar o firmware. Nenhuma etapa do desenvolvimento web deve exigir root, desbloqueio de bootloader ou instalação de ROM.
+- Priorizar HTML semântico, CSS conservador e JavaScript compatível com a versão do Chrome.
+- Evitar frameworks, bibliotecas e efeitos pesados sem necessidade.
+- Utilizar hospedagem HTTPS.
+- Manter o consumo de CPU, RAM e bateria baixo.
+- Não depender de Service Workers, Cache API ou APIs modernas sem teste e necessidade.
+- Distinguir suporte teórico de comportamento comprovado no tablet.
+- Testar o site no Chrome 43 do próprio SM-T280 antes de declarar compatibilidade.
 
-## 8. Reinterpretação de ideias anteriores
+A implementação web não deverá exigir root, desbloqueio de bootloader, instalação de APK ou alteração de ROM.
 
-As versões experimentais de desktop, janelas, gaveta de aplicativos, catálogo de aplicativos e instalação de módulos devem ser entendidas como explorações de interface, não como autorização para construir um computador ou instalar aplicativos Android.
+## 8. Reinterpretação dos protótipos anteriores
 
-As decisões atuais deste documento prevalecem:
+Os protótipos v0.1 a v0.8 registram explorações visuais e interativas. Eles continuam fazendo parte do histórico, mas suas funcionalidades não são automaticamente requisitos da versão atual.
 
-1. Preservar o Android original.
-2. Priorizar uma camada híbrida segura e reversível.
-3. Priorizar a experiência online 100% web pelo Chrome.
-4. Usar atalhos do Chrome para abrir sites pela tela inicial, se a compatibilidade for confirmada.
-5. Considerar somente um leitor offline leve como possível exceção.
-6. Não desenvolver loja de aplicativos nem sistema de instalação de APKs.
+Em particular, ideias anteriores de desktop de PC, múltiplas janelas de miniaplicativos, gaveta de aplicativos, biblioteca de apps, pacotes locais e modo offline não devem ser tratadas como decisões atuais.
+
+A direção atual prevalece:
+
+1. Website 100% online.
+2. Acesso pelo Chrome, preferencialmente por ícone na tela inicial.
+3. Personalização visual da própria experiência web.
+4. Android original preservado.
+5. Nenhum aplicativo adicional obrigatório.
+6. Nenhuma funcionalidade offline planejada.
+7. Nenhuma modificação de ROM, bootloader, kernel ou partições.
 
 ## 9. Critério para reconsiderar qualquer mudança de sistema
 
 Uma alteração profunda só poderá ser proposta quando:
 
 - Uma limitação real impedir uma função importante do Galaxy Legacy.
-- Uma solução menos arriscada tiver sido investigada e se mostrado insuficiente.
+- Uma solução web ou configuração comum do Android tiver sido investigada e se mostrado insuficiente.
 - A mudança for tecnicamente compatível com o SM-T280.
 - Os riscos, efeitos e limitações estiverem documentados.
 - Existir um método de recuperação aplicável ao aparelho.
