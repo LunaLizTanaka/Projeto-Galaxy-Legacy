@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7DDE1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Galaxy Legacy — teste de instalação</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: #F9E9D5; color: #59434b;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 22px; line-height: 1.5;
+    }
+    .panel {
+      max-width: 560px; margin: 28px auto; padding: 24px;
+      background: #fffaf7; border: 1px solid #B68D9A;
+      border-radius: 18px;
+    }
+    .mark {
+      width: 72px; height: 72px; display: block; margin: 0 auto 14px;
+    }
+    h1 { text-align: center; color: #8b6472; font-size: 24px; margin: 0 0 8px; }
+    .sub { text-align: center; margin: 0 0 22px; }
+    h2 { font-size: 17px; margin: 22px 0 8px; color: #8b6472; }
+    ol { padding-left: 22px; }
+    li { margin: 8px 0; }
+    .status {
+      padding: 12px; background: #F7DDE1; border-radius: 10px;
+      border: 1px solid #E8D5EA; font-weight: bold;
+    }
+    .note { font-size: 13px; color: #705c63; }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <img class="mark" src="icons/galaxy-legacy-192.png" alt="">
+    <h1>Galaxy Legacy</h1>
+    <p class="sub">Experimento de atalho instalado pelo Chrome</p>
+    <p id="mode" class="status">Verificando como esta página foi aberta…</p>
+    <h2>Como testar no Galaxy Tab A</h2>
+    <ol>
+      <li>Abra esta página no Chrome do tablet, usando um endereço HTTPS.</li>
+      <li>Toque no menu de três pontos do Chrome.</li>
+      <li>Escolha <strong>Adicionar à tela inicial</strong> (o texto pode variar).</li>
+      <li>Confirme o nome Galaxy Legacy e adicione o ícone.</li>
+      <li>Volte à tela inicial do Android e abra o novo ícone.</li>
+    </ol>
+    <h2>O que observar</h2>
+    <ul>
+      <li>Se o ícone Galaxy Legacy aparece na tela inicial.</li>
+      <li>Se a página abre sem a barra de endereço e os controles normais do Chrome.</li>
+      <li>Se o botão Voltar do Android retorna corretamente.</li>
+    </ul>
+    <p class="note">Este é apenas um teste de instalação/abertura. Não lê o histórico do Chrome, não lista atalhos do Android, não instala APK e não oferece modo offline. Não há Service Worker nem cache offline programado.</p>
+  </main>
+  <script>
+    (function () {
+      var result = document.getElementById('mode');
+      var standalone = false;
+      if (window.matchMedia) {
+        try { standalone = window.matchMedia('(display-mode: standalone)').matches; }
+        catch (e) {}
+      }
+      if (window.navigator && window.navigator.standalone === true) {
+        standalone = true;
+      }
+      result.innerHTML = standalone ?
+        'Resultado: o navegador informa que a página está em modo independente.' :
+        'Resultado: esta página parece estar aberta em uma aba normal. Depois de adicioná-la à tela inicial, abra pelo novo ícone para comparar.';
+    }());
+  </script>
+</body>
+</html>
