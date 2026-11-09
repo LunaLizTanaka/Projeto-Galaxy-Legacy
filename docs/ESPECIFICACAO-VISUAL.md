@@ -103,3 +103,14 @@ A interface será aprovada quando:
 - O painel de aplicativos permite iniciar os miniaplicativos em janelas flutuantes, sem eliminar a área de trabalho nem o dock.
 
 **Validação v0.3:** JavaScript verificado com `node --check`; HTML analisado pelo parser padrão do Python; ZIP verificado sem erros. A execução automatizada no Chromium foi bloqueada pela política do ambiente (`ERR_BLOCKED_BY_ADMINISTRATOR`), portanto a interação por gestos ainda não foi testada em navegador real. Chrome 43 e SM-T280 físico permanecem pendentes.
+
+
+## 10. Ajustes do protótipo visual v0.4 (09/11/2026)
+
+- Gesto da borda superior para baixo abre o painel **Configurações** do Galaxy Legacy, inspirado nas configurações rápidas do Android.
+- O painel inclui atalhos demonstrativos para Wi-Fi, Bluetooth, Não perturbe, rotação, modo avião e localização; controles visuais de brilho e volume; relógio/data; e acesso aos ajustes próprios do Galaxy Legacy.
+- Gesto da borda inferior para cima continua abrindo a gaveta de aplicativos e pastas.
+- A região de início dos gestos foi ampliada para facilitar o uso por toque.
+- Os controles do painel são apenas visuais e não controlam serviços reais nem as configurações do Android.
+
+**Validação v0.4:** JavaScript verificado com `node --check`; estrutura HTML analisada com o parser padrão do Python; verificações estáticas confirmaram os dois gestos e seus respectivos painéis; ZIP testado sem erros. Chrome 43 e SM-T280 físico permanecem pendentes de teste.
