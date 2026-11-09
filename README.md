@@ -95,3 +95,17 @@ Foi criada uma documentação específica com a análise de árvores de disposit
 - [Pesquisa de ROM para Galaxy Tab A SM-T280](docs/PESQUISA-ROM-SM-T280.md)
 
 **Estado:** nenhuma ROM aprovada para instalação. A AICP 12.1 não oficial é apenas uma candidata para auditoria adicional; código-fonte e pacotes publicados não comprovam estabilidade no aparelho.
+
+
+## 11. Diretriz atual de arquitetura e segurança
+
+A direção aprovada é construir uma experiência híbrida sobre o Android original, sem transformar o tablet em um computador e sem modificar a ROM por padrão.
+
+- Prioridade permanente: escolher a opção mais segura, simples e reversível.
+- Não instalar aplicativos adicionais como parte do escopo normal.
+- Priorizar uma experiência online 100% web pelo Chrome, usando atalhos de sites na tela inicial quando compatíveis.
+- Considerar somente um leitor offline leve como possível exceção para leitura de arquivos locais.
+- Não desenvolver loja de APKs ou sistema de instalação de aplicativos.
+- Não desbloquear bootloader, obter root, gravar partições ou instalar ROM para implementar funções que possam ser atendidas pela camada web.
+
+As decisões completas e as condições para reconsiderar mudanças profundas estão registradas em [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md). Essas diretrizes prevalecem sobre ideias exploratórias anteriores quando houver divergência.
