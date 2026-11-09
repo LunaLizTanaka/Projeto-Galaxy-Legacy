@@ -22,7 +22,7 @@ Projeto para investigar, documentar e desenvolver sites e aplicativos web compat
 
 - O tablet tem dificuldade para acessar alguns sites, enquanto outros ainda funcionam.
 - O Google Chrome instalado é uma versão antiga (43.0.2357.93), em Android 5.1.1.
-- A pessoa usuária confirmou que o segundo navegador é o Samsung Internet, reconhecido pelo ícone roxo com um planeta e anel. A versão não pôde ser consultada; não confundir esse aplicativo com o Microsoft Internet Explorer.
+- A pessoa usuária prefere utilizar o Google Chrome. O Samsung Internet será considerado navegador secundário e poderá receber testes complementares.
 - HTML continua sendo uma tecnologia utilizável; as limitações podem estar relacionadas à versão do Android, ao navegador, ao motor de renderização, a recursos de JavaScript/CSS ou a requisitos de segurança dos sites.
 - Ainda não foi realizado um diagnóstico técnico completo no aparelho. As causas específicas das falhas permanecem em aberto.
 
@@ -35,7 +35,7 @@ Criar um conjunto de sites e aplicações web projetados e testados para o apare
 3. **Biblioteca pessoal:** leitura de textos, anotações e organização de conteúdo.
 4. **Ambiente de aplicativos:** ferramentas pessoais, interfaces de personagens, assistentes virtuais e animações leves.
 
-## 4. Diretrizes técnicas iniciais
+## 4. Prioridade de navegadores\n\n- **Principal:** Google Chrome 43.0.2357.93. O desenvolvimento e os testes de aceitação devem priorizar essa versão instalada no tablet.\n- **Secundário:** Samsung Internet. A compatibilidade poderá ser verificada depois, sem comprometer a prioridade do Chrome.\n- Não presumir que os dois navegadores tenham o mesmo suporte a recursos.\n\n## 5. Diretrizes técnicas iniciais
 
 Estas são hipóteses e critérios de compatibilidade a validar, não capacidades já confirmadas no tablet:
 
@@ -51,7 +51,7 @@ Estas são hipóteses e critérios de compatibilidade a validar, não capacidade
 - Priorizar páginas leves e, quando tecnicamente possível, recursos que continuem utilizáveis sem conexão.
 - Não confundir compatibilidade visual com compatibilidade funcional: cada recurso precisa ser testado no navegador real.
 
-## 5. Plano de diagnóstico
+## 6. Plano de diagnóstico
 
 Criar uma página de testes que verifique:
 
@@ -67,7 +67,7 @@ Criar uma página de testes que verifique:
 
 Os resultados devem registrar navegador, versão do Android, data do teste e resultado de cada funcionalidade. Não declarar suporte sem teste no aparelho.
 
-## 6. Informações ainda necessárias
+## 7. Informações ainda necessárias
 
 Quando possível, registrar:
 
@@ -75,14 +75,14 @@ Quando possível, registrar:
 - Resolução da tela e quantidade de memória RAM, se identificáveis.
 - Exemplos de sites que funcionam e sites que falham, incluindo a mensagem de erro ou comportamento observado.
 
-## 7. Critério de sucesso
+## 8. Critério de sucesso
 
 Um projeto será considerado compatível somente depois de ser aberto e testado no próprio Galaxy Tab A (2016), SM-T280. Testes em emuladores ou inspeção de código podem ajudar, mas não substituem a validação no dispositivo físico.
 
-## 8. Estado atual
+## 9. Estado atual
 
 **Fase:** levantamento inicial e planejamento.
 
 **Confirmado:** modelo SM-T280, Galaxy Tab A (2016), Android 5.1.1, Google Chrome 43.0.2357.93, Blink 537.36, V8 4.3.61.22, dificuldade parcial de acesso a sites e objetivos gerais.
 
-**Pendente:** versão do Samsung Internet, resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade.
+**Pendente:** resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade. A versão do Samsung Internet é opcional, pois ele não é o navegador prioritário.
