@@ -109,3 +109,13 @@ JavaScript verificado com `node --check`, HTML analisado pelo parser padrão do 
 - Fechar a janela não desinstala nem remove o atalho do aplicativo; ele pode ser aberto novamente pela área de trabalho ou gaveta.
 
 Verificações: HTML analisado pelo parser padrão do Python, JavaScript aprovado em `node --check`, rotinas do alvo/fechamento conferidas estaticamente e ZIP verificado sem erros. A interação ainda precisa ser testada em navegador real e no Chrome 43 do SM-T280.
+
+
+## v0.6 — barra de janela simplificada
+
+- Removidos os botões de minimizar (−) e fechar (×) de dentro das janelas.
+- A barra de título exibe apenas o ícone e o nome do aplicativo e continua permitindo arrastar a janela.
+- Para fechar, arraste a janela até o alvo X exibido na parte inferior e solte sobre ele.
+- Aplicativos fechados continuam disponíveis na área de trabalho, gaveta e dock para serem abertos novamente.
+
+Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parser padrão do Python, remoção dos controles confirmada estaticamente e ZIP testado sem erros. O teste real no navegador/Chrome 43 do SM-T280 ainda está pendente.
