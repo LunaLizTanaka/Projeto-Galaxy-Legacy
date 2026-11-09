@@ -467,3 +467,120 @@ A publicação AICP 12.1 investigada já possui alertas de configuração regist
 | Desbloqueio/root/flash | Não realizados e não autorizados |
 
 **Decisão de segurança:** continuar a investigação de ROM, mas começar pelo diagnóstico não destrutivo dos avisos. Não instalar uma ROM como tentativa às cegas de remover notificações ou alertas.
+
+
+## 17. Avaliação prática: impacto provável de uma ROM no uso atual do tablet (09/11/2026)
+
+Esta seção avalia a pergunta: uma ROM personalizada melhoraria problemas concretos do SM-T280, como armazenamento cheio, impossibilidade de abrir a Galeria e falhas ao baixar fotografias?
+
+### 17.1 Resumo executivo
+
+**A troca de ROM pode melhorar algumas limitações de software, mas não aumenta a capacidade física dos 8 GB e não garante corrigir downloads ou abrir a Galeria.**
+
+Para o problema relatado de armazenamento quase ou totalmente cheio, a oportunidade técnica mais relevante é verificar o uso de um cartão microSD como armazenamento adotável em uma build Android 7.1 compatível.
+
+### 17.2 Downloads de fotos
+
+O Android 5.1.1 e o Chrome 43 já deveriam permitir baixar imagens em condições normais. O Chrome salva downloads no local padrão do dispositivo; se não há espaço livre suficiente, a gravação pode falhar. A ajuda atual do Chrome descreve o download de imagens e o uso da pasta padrão de downloads.
+
+Fontes:
+- Ajuda do Google Chrome — fazer download de arquivos e imagens: https://support.google.com/chrome/answer/95759?co=GENIE.Platform%3DAndroid&hl=pt-BR
+- Manual Samsung SM-T280 — gerenciamento do armazenamento e cartão de memória: https://s3.amazonaws.com/doi-product-assets/pub/User-Manual/1032932047.pdf
+
+A falta de espaço é uma explicação plausível e diretamente relacionada ao sintoma informado, mas ainda não prova que seja a única causa. Permissões, pasta de destino, serviço Download Manager ou armazenamento de mídia também podem participar.
+
+Uma ROM mais recente só ajudará nos downloads se corrigir o componente que está falhando ou permitir um destino de armazenamento utilizável. Trocar o Android, isoladamente, não garante isso.
+
+### 17.3 Armazenamento adotável: oportunidade relevante, ainda a validar
+
+A especificação Android descreve o Adoptable Storage desde Android 6.0. Um cartão SD adotado é formatado e criptografado para uso pelo dispositivo e pode receber a migração do armazenamento compartilhado, liberando espaço da memória interna.
+
+Fontes:
+- AOSP — Adoptable storage: https://source.android.com/docs/core/storage/adoptable
+- Árvore de dispositivo SM-T280 — fstab.sc8830: https://github.com/underscoremone/android_device_samsung_gtexswifi/blob/cm-14.1/rootdir/fstab.sc8830
+- Árvore de dispositivo SM-T280 — BoardConfig.mk: https://github.com/underscoremone/android_device_samsung_gtexswifi/blob/cm-14.1/BoardConfig.mk
+
+Na árvore underscoremone/android_device_samsung_gtexswifi da branch cm-14.1, rootdir/fstab.sc8830 declara o cartão como volume gerenciado pelo vold, com a opção encryptable=userdata. Isso é uma evidência de configuração favorável ao gerenciamento e à adoção do cartão.
+
+**Limite da evidência:** a linha do fstab, por si só, não comprova que a build binária específica lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip tenha o recurso habilitado e funcional, nem que a interface permita migrar o armazenamento primário. O relato de suporte a Adoptable Storage continua precisando de confirmação direta na mensagem do desenvolvedor ou de teste no aparelho.
+
+Riscos documentados pelo AOSP:
+- A adoção apaga e reformata o cartão.
+- O conteúdo é criptografado e vinculado ao tablet; o cartão não poderá ser lido normalmente em outro aparelho.
+- Cartões lentos podem degradar o desempenho.
+- Remover ou danificar o cartão pode deixar dados indisponíveis.
+
+Não formatar/adotar nenhum cartão nesta fase.
+
+Como alternativa menos arriscada, o cartão pode ser usado como armazenamento portátil, para guardar fotos e arquivos que possam ser movidos ou salvos nele. O manual do SM-T280 documenta o uso de cartão de memória. A possibilidade de o Chrome 43 baixar diretamente para esse cartão não foi confirmada; pode ser necessário baixar para a memória interna e mover o arquivo usando um gerenciador de arquivos, depois de liberar algum espaço.
+
+### 17.4 Galeria e armazenamento cheio
+
+O aparelho tem 8 GB de armazenamento interno e 1,5 GB de RAM. Memória RAM e espaço interno são recursos diferentes.
+
+Com o armazenamento quase esgotado, o Android e os aplicativos podem não conseguir criar arquivos temporários, miniaturas, bancos de dados ou novos arquivos. Isso pode contribuir para falhas da Galeria e de downloads.
+
+Uma instalação limpa de ROM começa com os dados do usuário apagados e pode aparentar resolver o problema porque libera espaço temporariamente. Isso não aumenta o tamanho do armazenamento e não evita que ele volte a encher.
+
+Uma ROM AOSP pode vir com menos aplicativos Samsung preinstalados, mas os aplicativos de sistema ocupam partições próprias e a economia real de espaço em /data ainda precisa ser medida. Não presumir grande ganho.
+
+**Conclusão:** antes de considerar uma instalação, deve-se identificar o que ocupa o espaço e, quando possível, retirar fotos e arquivos pessoais para um local seguro.
+
+### 17.5 Navegador e compatibilidade web
+
+A atualização para Android 7.1 pode permitir versões de navegadores mais novas que as compatíveis com Android 5.1, mas não resolve a necessidade de um navegador atual em 2026.
+
+Fontes:
+- Aviso do Chrome: Chrome 119 foi a última versão compatível com Android 7.0; Chrome 120 exige Android 8.0: https://support.google.com/chrome/thread/243346420/sunsetting-chrome-support-for-android-7-0-nougat
+- Requisitos atuais de Chrome para Android: https://support.google.com/chrome/a/answer/7100626
+- Mozilla: Firefox 144 exige Android 8.0; Firefox 143 é a última versão para Android 7 ou anterior: https://blog.mozilla.org/futurereleases/2025/09/15/raising-the-minimum-android-version-for-firefox/
+
+A versão atual do Chrome exige Android 10 ou posterior. Portanto, LineageOS 14.1/AICP 12.1, ambas Android 7.1, não levariam o tablet à versão atual do Chrome. Firefox 143 pode ser uma opção historicamente mais recente em Android 7.1, mas não recebe os novos lançamentos a partir do Firefox 144.
+
+Uma árvore LineageOS 17.1/Android 10 foi encontrada anteriormente, mas não foi localizada uma release binária comprovada para o SM-T280. Código antigo de Android 10 não é razão suficiente para tentar instalar uma compilação.
+
+### 17.6 Desempenho, estabilidade e componentes
+
+O hardware permanece o mesmo: Spreadtrum SC7730SW, Cortex-A7, Mali-400 MP2, 1,5 GB RAM e 8 GB internos.
+
+Uma ROM comunitária mais enxuta pode reduzir parte do software pré-instalado, mas não aumenta CPU, RAM ou desempenho físico da memória flash. O ganho real de fluidez não foi medido.
+
+Há relatos comunitários de problemas da LineageOS 14.1 no SM-T280, inclusive falhas de câmera e vídeo. Um relato público descreve que a câmera nativa não funcionava e menciona problemas de gravação de vídeo e microfone em chamadas. É evidência anedótica, não uma matriz de testes controlada:
+- Relato sobre SM-T280 com LineageOS 14.1: https://www.technopat.net/sosyal/konu/samsung-tab-a-2016-sm-t280q-custom-rom-duzgun-calismiyor.2980493/
+- Discussão adicional sobre câmera: https://4pda.to/forum/index.php?showtopic=872293&st=1600
+
+A árvore da LineageOS contém configuração específica para áudio, Wi-Fi, Bluetooth e câmera, mas o código e os arquivos de configuração não demonstram funcionamento completo da ROM binária.
+
+Há também configurações de segurança que merecem análise antes de qualquer uso. Na árvore underscoremone consultada, o BoardConfig.mk usa androidboot.selinux=permissive, e system.prop contém ro.adb.secure=0 e ro.secure=0. Esses valores na árvore são alertas de auditoria; o comportamento da build pronta deve ser confirmado inspecionando o ZIP e sua inicialização. Não presumir que a ROM seja mais segura que o firmware Samsung apenas por usar Android 7.1.
+
+### 17.7 Comparação prática preliminar
+
+| Necessidade | LineageOS 14.1 Android 7.1 | Estado |
+|---|---|---|
+| Baixar fotos | Pode funcionar se houver espaço e o armazenamento de downloads estiver saudável | Não garantido |
+| Abrir Galeria | Pode melhorar se a falha for de software; não resolve espaço cheio sozinha | Não comprovado |
+| Usar cartão SD | Há configuração de volume gerenciado na árvore | Evidência favorável |
+| Adoptable Storage | AOSP suporta desde Android 6; fstab tem flag de adoção | Precisa confirmar na build |
+| Mais espaço físico interno | Não aumenta os 8 GB | Não |
+| Navegador mais novo que Chrome 43 | Sim, mas Android 7.1 limita as versões disponíveis | Benefício parcial |
+| Chrome atual de 2026 | Exige Android 10 ou posterior | Não |
+| Mais fluidez | Possível redução de apps Samsung, mas hardware continua limitado | Não medido |
+| Câmera nativa | Há relatos de problemas | Risco conhecido |
+| Segurança | Há configurações de árvore a auditar e base Android antiga | Não comprovada |
+
+### 17.8 Conclusão e próxima decisão
+
+A LineageOS 14.1 continua sendo a ROM com a build mais concreta para auditoria, mas a avaliação atual não autoriza instalação.
+
+O benefício mais plausível para o problema relatado não é simplesmente Android 7.1: é a possível combinação de uma ROM enxuta com cartão microSD em modo adotável, caso a build realmente implemente o recurso corretamente.
+
+Para o navegador, Android 7.1 oferece apenas melhoria parcial: não permite manter o Chrome atualizado em 2026. Uma base Android 10 seria mais interessante em teoria para navegação atual, mas ainda não há pacote específico e comprovado para o SM-T280.
+
+Antes de qualquer alteração:
+1. Identificar o espaço ocupado no sistema original.
+2. Verificar se existe cartão microSD e se ele está reconhecido.
+3. Preservar os arquivos pessoais antes de liberar espaço.
+4. Confirmar a causa das falhas da Galeria e de downloads.
+5. Auditar segurança, recuperação e compatibilidade das ROMs.
+
+**Decisão:** continuar investigando LineageOS 14.1, mas não instalar ainda. A prioridade é recuperar espaço de maneira reversível, verificar o funcionamento do cartão SD e determinar se a ROM oferece benefício suficiente para justificar o risco.
