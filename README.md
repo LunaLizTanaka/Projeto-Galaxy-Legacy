@@ -123,3 +123,12 @@ A decisão atual é desenvolver o Galaxy Legacy como um website inteiramente onl
 - Nenhuma ROM, root, desbloqueio do bootloader ou gravação de partições será necessária para desenvolver a versão web.
 
 Ver [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md), que prevalecem sobre ideias de protótipos antigos quando houver divergência.
+
+
+## 13. Frente separada: manutenção do tablet e avaliação de ROM
+
+A pessoa responsável também deseja melhorar o próprio SM-T280 e mantém aberta a possibilidade de modificar sua ROM. Essa investigação é separada do Galaxy Legacy Web, que permanece 100% online e não depende de alteração do Android.
+
+A avaliação de ROM foi reaberta como possibilidade de manutenção do tablet. Antes de qualquer instalação, devem ser identificados os avisos exatos, investigadas suas causas e comprovada uma rota de recuperação específica para o SM-T280. Nenhuma ROM está aprovada e nenhuma alteração no sistema foi realizada.
+
+Consulte [Pesquisa de ROM para SM-T280](docs/PESQUISA-ROM-SM-T280.md) e [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
