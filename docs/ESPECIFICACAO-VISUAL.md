@@ -146,3 +146,19 @@ A interface será aprovada quando:
 - O gesto para fechar arrastando até o alvo X inferior permanece disponível.
 
 **Verificações v0.7:** JavaScript aprovado em `node --check`; HTML analisado com o parser padrão do Python; verificações estáticas confirmaram ausência de abertura automática e presença da lógica de ampliar/restaurar; ZIP verificado sem erros. A interação visual ainda precisa ser testada em navegador real e no Chrome 43 do SM-T280.
+
+
+## 14. Ajuste do protótipo visual v0.8 — aplicativos em tela cheia (09/11/2026)
+
+- O shell do Galaxy Legacy ocupa toda a área de conteúdo disponível, com dimensões adaptáveis e sem rolagem da página.
+- A área de trabalho continua híbrida: páginas horizontais, ícones, pastas, dock, gaveta de aplicativos e janelas flutuantes.
+- A entrada continua limpa, sem aplicativos abertos automaticamente.
+- Ao arrastar a barra superior de uma janela até o topo, o aplicativo entra em modo de tela cheia próprio. Nesse modo, desaparecem o desktop, as páginas, o dock e a moldura da janela; fica somente a interface do aplicativo ocupando a área disponível.
+- O aplicativo maximizado reutiliza a mesma janela e os mesmos elementos editáveis. Ao voltar, o conteúdo permanece e a janela retorna à área de trabalho com a geometria flutuante anterior.
+- A seta de retorno e o gesto de baixo para cima encerram o modo de aplicativo e retornam à área de trabalho. No desktop, o gesto inferior continua abrindo a gaveta de aplicativos.
+- O gesto superior de cima para baixo abre Configurações rápidas também durante o modo de aplicativo.
+- O pacote local inclui manifesto web com `display: fullscreen` e ícones, além de tentativa de usar a API de tela cheia após ação explícita do usuário quando disponível.
+
+**Distinção de tela cheia:** CSS pode preencher o viewport da página, mas não pode obrigar o Chrome a esconder sua própria barra de endereço e seus controles. A experiência de aplicativo independente depende de publicação em HTTPS, suporte do navegador ao manifesto e adição à tela inicial; a API de tela cheia depende igualmente de suporte do navegador. Compatibilidade imersiva com Chrome 43/Android 5.1.1 não está confirmada.
+
+**Verificações v0.8:** JavaScript validado com `node --check`, HTML analisado com o parser padrão do Python, manifesto JSON validado e pacote ZIP verificado. A execução visual no Chromium do ambiente não foi concluída; não há teste no SM-T280 físico.
