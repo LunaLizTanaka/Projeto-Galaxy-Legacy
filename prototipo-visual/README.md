@@ -147,3 +147,12 @@ Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parse
 **Limite importante:** abrir `index.html` como arquivo local ocupa a área de conteúdo do Chrome, mas não remove por si só a barra de endereço e os controles do navegador. O manifesto de instalação depende de publicação em uma origem compatível (normalmente HTTPS), instalação/adicionamento à tela inicial e suporte do navegador. A API de tela cheia também depende do navegador. Não há confirmação de que o Chrome 43 do SM-T280 ofereça o comportamento imersivo completo.
 
 **Verificações v0.8:** JavaScript aprovado em `node --check`; HTML analisado pelo parser padrão do Python; JSON do manifesto validado; integridade do ZIP conferida. A execução visual no Chromium deste ambiente não foi concluída. O teste no Chrome 43 e no tablet físico permanece pendente.
+
+
+## Nota de precedência — escopo atual (09/11/2026)
+
+Este README documenta protótipos históricos de exploração visual. As descrições de desktop tradicional, miniaplicativos, gaveta de aplicativos, janelas flutuantes, pacote local ou operação offline não definem automaticamente a versão atual do Galaxy Legacy.
+
+A decisão vigente é construir um website 100% online, aberto pelo Chrome no Android original, com personalização visual limitada à própria experiência web. Não haverá instalação de aplicativos adicionais nem requisito offline. A composição visual definitiva ainda será especificada.
+
+Consulte [Diretrizes de arquitetura, escopo e segurança](../docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md). Em caso de divergência, as diretrizes atuais prevalecem sobre este histórico.
