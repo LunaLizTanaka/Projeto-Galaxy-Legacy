@@ -99,3 +99,13 @@ JavaScript validado com `node --check`, HTML analisado com o parser padrão do P
 - Os controles não alteram configurações reais do Android.
 
 JavaScript verificado com `node --check`, HTML analisado pelo parser padrão do Python e verificações estáticas dos gestos concluídas; ZIP testado sem erros. A validação no Chrome 43 e no SM-T280 físico permanece pendente.
+
+
+## v0.5 — fechar janelas arrastando para X
+
+- Ao arrastar a barra de título, aparece um alvo **X — Solte aqui para fechar** na parte inferior.
+- Soltar a janela sobre esse alvo fecha a janela/aba do protótipo.
+- O X da própria barra de título e o botão de minimizar continuam disponíveis.
+- Fechar a janela não desinstala nem remove o atalho do aplicativo; ele pode ser aberto novamente pela área de trabalho ou gaveta.
+
+Verificações: HTML analisado pelo parser padrão do Python, JavaScript aprovado em `node --check`, rotinas do alvo/fechamento conferidas estaticamente e ZIP verificado sem erros. A interação ainda precisa ser testada em navegador real e no Chrome 43 do SM-T280.
