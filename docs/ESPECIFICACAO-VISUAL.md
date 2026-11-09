@@ -194,3 +194,17 @@ Os arquivos existentes no tablet só serão importados depois de seleção expl�
 Os arquivos novos criados ou salvos dentro do Galaxy Legacy devem ser enviados ao armazenamento remoto da conta, após confirmação do servidor. A nuvem será privada por padrão e não poderá ser tratada como armazenamento gratuito ilimitado.
 
 Este requisito é para componentes internos do website e não implica instalar aplicativos Android.
+
+
+## 17. Histórico e sites do Chrome — requisito com limitações (09/11/2026)
+
+A interface poderá oferecer uma área de histórico e sites salvos, mas não pode fingir possuir acesso automático aos dados privados do Chrome ou do launcher Android.
+
+- Um website comum não consegue consultar diretamente o histórico local/sincronizado do Chrome.
+- A API chrome.history pertence a extensões; Chrome para Android não oferece suporte às extensões tradicionais.
+- Os atalhos criados com “Adicionar à tela inicial” são atalhos do launcher Android e não podem ser enumerados por uma página web.
+- A Data Portability API possui dados exportáveis de histórico e favoritos do Chrome, mas o Google informa que a API não oferece suporte a contas de usuários menores de 18 anos. Não tentar contornar essa restrição.
+- A área Galaxy Legacy poderá manter seus próprios sites favoritos e, quando arquivos de exportação oficiais estiverem legitimamente disponíveis, oferecer importação manual, indicando a origem e a data.
+- O histórico de navegação não deve ser enviado à nuvem por padrão. Qualquer envio futuro exigirá consentimento separado e informação clara sobre os dados compartilhados.
+
+A interface não deve usar rótulos como “Histórico sincronizado” ou “Todos os atalhos do tablet” quando os dados vierem de uma lista manual ou importação parcial.
