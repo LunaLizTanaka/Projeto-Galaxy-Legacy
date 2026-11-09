@@ -86,3 +86,12 @@ Um projeto será considerado compatível somente depois de ser aberto e testado 
 **Confirmado:** modelo SM-T280, Galaxy Tab A (2016), Android 5.1.1, Google Chrome 43.0.2357.93, Blink 537.36, V8 4.3.61.22, dificuldade parcial de acesso a sites e objetivos gerais.
 
 **Pendente:** resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade. A versão do Samsung Internet é opcional, pois ele não é o navegador prioritário.
+
+
+## 10. Investigação de ROM para o SM-T280
+
+Foi criada uma documentação específica com a análise de árvores de dispositivo, versões LineageOS encontradas, o pacote AICP 12.1 não oficial publicado em outubro de 2026, riscos, requisitos de recuperação e compatibilidade planejada com o Galaxy Legacy.
+
+- [Pesquisa de ROM para Galaxy Tab A SM-T280](docs/PESQUISA-ROM-SM-T280.md)
+
+**Estado:** nenhuma ROM aprovada para instalação. A AICP 12.1 não oficial é apenas uma candidata para auditoria adicional; código-fonte e pacotes publicados não comprovam estabilidade no aparelho.
