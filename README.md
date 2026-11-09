@@ -1,37 +1,37 @@
 # Projeto Galaxy Legacy
 
-Projeto para investigar, documentar e desenvolver sites e aplicativos web compatíveis com o tablet Samsung Galaxy Tab A6, família de modelos SM-T280 / SM-T285.
+Projeto para investigar, documentar e desenvolver sites e aplicativos web compatíveis com o tablet Samsung Galaxy Tab A (2016), modelo SM-T280.
 
 ## 1. Dispositivo-alvo
 
 | Informação | Estado atual |
 |---|---|
-| Família/modelo informado | Samsung Galaxy Tab A6 |
-| Códigos de modelo mencionados | SM-T280 / SM-T285 |
-| Modelo exato do aparelho em uso | Ainda não confirmado |
-| Navegador utilizado | Navegador de Internet da Samsung (Samsung Internet) |
-| Versão do Android | Ainda não informada |
-| Versão do Samsung Internet | Ainda não informada |
+| Família/modelo | Samsung Galaxy Tab A (2016) |
+| Código exato | SM-T280 |
+| Sistema operacional | Android 5.1.1 |
+| Navegador Chrome | Google Chrome 43.0.2357.93 |
+| Motor Blink informado pelo Chrome | 537.36 (@196332) |
+| Motor JavaScript V8 informado pelo Chrome | 4.3.61.22 |
+| Outro navegador mencionado | Aplicativo identificado pela pessoa usuária como “Internet”/“Internet Explorer”; versão ainda não identificada |
+| Versão do Samsung Internet | Ainda não confirmada |
 | Resolução, memória e armazenamento | Ainda não verificados |
 
-**Importante:** SM-T280 e SM-T285 são variantes diferentes. A identificação exata deve ser confirmada em *Configurações → Sobre o dispositivo*. Não presumir que os dois modelos estejam sendo testados.
+**Fonte da identificação:** fotografias das telas “Sobre o Google Chrome” e “Sobre o dispositivo”. A tela do Chrome informa Android 5.1.1 e SM-T280 Build/LMY47V; a tela de configurações identifica o aparelho como Galaxy Tab A (2016), modelo SM-T280.
 
 ## 2. Comportamento observado
 
-Informações relatadas pela pessoa usuária:
-
-- O tablet tem dificuldade para acessar alguns sites.
-- Alguns sites ainda podem ser acessados normalmente.
-- O navegador informado é o Samsung Internet.
+- O tablet tem dificuldade para acessar alguns sites, enquanto outros ainda funcionam.
+- O Google Chrome instalado é uma versão antiga (43.0.2357.93), em Android 5.1.1.
+- Também existe outro aplicativo de navegação que a pessoa usuária chamou de “Internet Explorer”; a identidade e a versão exatas ainda precisam ser verificadas. Não presumir que seja Microsoft Internet Explorer.
 - HTML continua sendo uma tecnologia utilizável; as limitações podem estar relacionadas à versão do Android, ao navegador, ao motor de renderização, a recursos de JavaScript/CSS ou a requisitos de segurança dos sites.
-- Ainda não foi realizado um diagnóstico técnico no aparelho. As causas específicas permanecem em aberto.
+- Ainda não foi realizado um diagnóstico técnico completo no aparelho. As causas específicas das falhas permanecem em aberto.
 
 ## 3. Objetivos do projeto
 
 Criar um conjunto de sites e aplicações web projetados e testados para o aparelho, incluindo:
 
 1. **Portal principal:** página inicial com atalhos para os projetos e ferramentas.
-2. **Navegador experimental:** interface web para organizar favoritos e acessar páginas. Inicialmente será apenas uma interface/aplicação web; não será um navegador nativo nem substituirá o Samsung Internet.
+2. **Navegador experimental:** interface web para organizar favoritos e acessar páginas. Inicialmente será apenas uma interface/aplicação web; não será um navegador nativo nem substituirá o navegador instalado.
 3. **Biblioteca pessoal:** leitura de textos, anotações e organização de conteúdo.
 4. **Ambiente de aplicativos:** ferramentas pessoais, interfaces de personagens, assistentes virtuais e animações leves.
 
@@ -42,7 +42,7 @@ Estas são hipóteses e critérios de compatibilidade a validar, não capacidade
 - Preferir HTML simples e semântico.
 - Usar CSS conservador e layouts responsivos adequados à tela do aparelho.
 - Evitar dependências grandes e frameworks modernos quando não forem necessários.
-- Considerar JavaScript ES5 como baseline inicial de compatibilidade, verificando recursos individualmente antes de adotar sintaxe ou APIs mais recentes.
+- Considerar JavaScript ES5 como baseline inicial de compatibilidade. O Chrome 43 usa V8 4.3.61.22, portanto recursos modernos não devem ser presumidos como disponíveis.
 - Otimizar imagens e limitar animações, efeitos e consumo de memória.
 - Não depender de PWA, Service Workers ou instalação como aplicativo até confirmar suporte.
 - Verificar LocalStorage e oferecer alternativa quando necessário.
@@ -71,20 +71,18 @@ Os resultados devem registrar navegador, versão do Android, data do teste e res
 
 Quando possível, registrar:
 
-- Código exato do modelo: SM-T280 ou SM-T285.
-- Versão do Android: *Configurações → Sobre o dispositivo → Informações do software*.
-- Versão do Samsung Internet: menu/configurações → Sobre o Samsung Internet, se disponível.
+- Versão do outro navegador chamado de “Internet”/“Internet Explorer” (abrir o menu e procurar “Sobre” ou “Informações do aplicativo”).
 - Resolução da tela e quantidade de memória RAM, se identificáveis.
 - Exemplos de sites que funcionam e sites que falham, incluindo a mensagem de erro ou comportamento observado.
 
 ## 7. Critério de sucesso
 
-Um projeto será considerado compatível somente depois de ser aberto e testado no próprio Galaxy Tab A6. Testes em emuladores ou inspeção de código podem ajudar, mas não substituem a validação no dispositivo físico.
+Um projeto será considerado compatível somente depois de ser aberto e testado no próprio Galaxy Tab A (2016), SM-T280. Testes em emuladores ou inspeção de código podem ajudar, mas não substituem a validação no dispositivo físico.
 
 ## 8. Estado atual
 
 **Fase:** levantamento inicial e planejamento.
 
-**Confirmado:** família de aparelho informada, navegador utilizado, dificuldade parcial de acesso a sites e objetivos gerais.
+**Confirmado:** modelo SM-T280, Galaxy Tab A (2016), Android 5.1.1, Google Chrome 43.0.2357.93, Blink 537.36, V8 4.3.61.22, dificuldade parcial de acesso a sites e objetivos gerais.
 
-**Pendente:** identificação exata da variante, versões do Android e Samsung Internet e execução do diagnóstico de compatibilidade.
+**Pendente:** identificação do outro navegador mencionado, resolução e RAM, exemplos concretos de sites com falha e execução do diagnóstico de compatibilidade.
