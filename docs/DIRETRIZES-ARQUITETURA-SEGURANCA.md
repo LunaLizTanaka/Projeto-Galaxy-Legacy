@@ -25,7 +25,8 @@ Por padrão:
 - Preservar o firmware e a configuração original do Android.
 - Não desbloquear o bootloader.
 - Não obter root.
-- Não modificar, substituir ou instalar ROM.
+- Não modificar, substituir ou instalar ROM como etapa automática ou requisito do Galaxy Legacy Web.
+- Uma ROM personalizada pode ser investigada separadamente como possível medida de manutenção e melhoria do próprio tablet, se houver problemas reais que justifiquem essa opção.
 - Não gravar partições, alterar recovery ou modificar o kernel.
 - Não realizar wipe ou restauração de fábrica para fins de desenvolvimento.
 - Não desativar mecanismos de segurança nem serviços essenciais.
@@ -119,7 +120,7 @@ O desenvolvimento deverá:
 - Distinguir suporte teórico de comportamento comprovado no tablet.
 - Testar o site no Chrome 43 do próprio SM-T280 antes de declarar compatibilidade.
 
-A implementação web não deverá exigir root, desbloqueio de bootloader, instalação de APK ou alteração de ROM.
+A implementação web não deverá exigir root, desbloqueio de bootloader, instalação de APK ou alteração de ROM. A investigação de uma ROM para melhorar o sistema do tablet é uma frente separada, não um pré-requisito do website.
 
 ## 8. Reinterpretação dos protótipos anteriores
 
@@ -135,17 +136,38 @@ A direção atual prevalece:
 4. Android original preservado.
 5. Nenhum aplicativo adicional obrigatório.
 6. Nenhuma funcionalidade offline planejada.
-7. Nenhuma modificação de ROM, bootloader, kernel ou partições.
+7. Nenhuma modificação de ROM, bootloader, kernel ou partições será necessária para desenvolver o website. A possibilidade de uma ROM para manutenção do tablet pode ser avaliada separadamente, conforme as regras de segurança.
 
 ## 9. Critério para reconsiderar qualquer mudança de sistema
 
 Uma alteração profunda só poderá ser proposta quando:
 
-- Uma limitação real impedir uma função importante do Galaxy Legacy.
-- Uma solução web ou configuração comum do Android tiver sido investigada e se mostrado insuficiente.
+- Houver um problema real do tablet ou um requisito funcional que justifique a mudança.
+- Os avisos e sintomas tiverem sido identificados, sem presumir malware ou espionagem.
+- Alternativas menos arriscadas de diagnóstico e manutenção tiverem sido avaliadas.
 - A mudança for tecnicamente compatível com o SM-T280.
 - Os riscos, efeitos e limitações estiverem documentados.
 - Existir um método de recuperação aplicável ao aparelho.
 - A pessoa responsável pelo projeto autorizar expressamente a mudança.
 
 Até que essas condições sejam atendidas, o Android original deve ser preservado.
+
+
+## 10. Frente separada: manutenção do Android e avaliação de ROM
+
+A pessoa responsável pelo projeto esclareceu que também deseja melhorar o próprio tablet e **não descarta modificar sua ROM**. Essa intenção é independente do Galaxy Legacy Web.
+
+A avaliação de ROM permanece aberta, mas nenhuma ROM foi aprovada para instalação. Antes de recomendar qualquer alteração, será necessário:
+
+- Identificar os avisos exatos exibidos pelo Android, por meio de fotografias ou capturas de tela.
+- Distinguir problemas de armazenamento, memória RAM, certificados de usuário, VPN, administradores do dispositivo e outros alertas.
+- Não presumir que avisos de monitoramento signifiquem espionagem; por exemplo, Android pode exibir “A rede pode estar sendo monitorada” quando existe certificado de CA instalado pelo usuário ou tráfego encaminhado por VPN.
+- Examinar a situação do firmware e o nível de correção de segurança disponível.
+- Comparar a ROM original, LineageOS 14.1 e AICP 12.1 sem confundir uma versão Android mais recente com segurança comprovada.
+- Investigar a origem, a integridade e o conteúdo dos pacotes candidatos.
+- Validar um caminho de recuperação adequado ao SM-T280 antes de qualquer desbloqueio ou gravação.
+- Obter autorização expressa antes de qualquer procedimento que modifique o sistema.
+
+A ROM não deve ser instalada apenas para remover um aviso sem entender sua causa. Uma ROM diferente não garante a remoção de certificados, VPNs ou políticas de administração, e pode introduzir outros defeitos.
+
+**Estado:** investigação de manutenção/ROM reaberta; diagnóstico dos avisos pendente; instalação, desbloqueio, root e gravação continuam não autorizados.
