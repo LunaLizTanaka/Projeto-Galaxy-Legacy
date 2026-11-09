@@ -209,3 +209,74 @@ A menção a OpenGApps ARM / Android 7.1 / Pico também não constitui recomenda
 4. **Antes de instalação:** localizar relatos específicos, conferir arquivo e hash, inspecionar instalador e assert de dispositivo, validar recuperação e firmware original de retorno, e confirmar backup completo. Não alterar o tablet nesta fase.
 
 **Estado final:** LineageOS 14.1 é a primeira candidata para investigação detalhada, mas ainda não está formalmente aprovada para instalação. A prioridade continua sendo preservar o funcionamento do SM-T280 e evitar qualquer procedimento de contorno de proteção antirroubo.
+
+
+## 13. Plano de pré-recuperação e preparação antes de qualquer instalação (informações fornecidas em 09/11/2026)
+
+A pessoa usuária propôs um checklist que deverá ser avaliado antes de qualquer alteração no SM-T280. Esta seção registra o plano e acrescenta ressalvas técnicas para evitar que pré-requisitos presumidos sejam tratados como garantias.
+
+### 13.1 Firmware original Samsung e caminho de restauração
+
+Antes de considerar qualquer ROM customizada, será necessário:
+
+- Identificar a região/CSC real do firmware instalado e a variante exata **SM-T280**. ZTO é apenas uma hipótese para firmware brasileiro; não selecionar CSC por suposição, pois o aparelho pode ter origem/região diferente.
+- Localizar o firmware stock oficial ou uma fonte de distribuição confiável para SM-T280 e confirmar que o pacote corresponde ao modelo, CSC/região e revisão de bootloader adequados.
+- Confirmar que o pacote contém os componentes necessários para a restauração e que o procedimento de retorno é documentado para este modelo.
+- Validar a versão do Odin compatível com o pacote e aparelho. “Odin 3.12 ou superior” não é regra universal: a versão concreta precisa ser confirmada para o firmware e o dispositivo.
+- Ter os drivers USB Samsung apropriados em um computador Windows compatível, caso o método de restauração escolhido dependa de Odin.
+- Preparar cópia dos dados pessoais antes de qualquer desbloqueio ou wipe. Não considerar que uma restauração stock preserve os dados.
+
+**Limitação do ambiente atual:** a pessoa usuária utiliza um Chromebook. Odin é uma ferramenta para Windows, e o ambiente Linux do ChromeOS não equivale a um Windows com os drivers USB Samsung. Não presumir que Odin funcione diretamente no Chromebook, por Wine, ou dentro do contêiner Linux. Se Odin for indispensável, será necessário um computador Windows compatível e com drivers adequados; não improvisar métodos de gravação alternativos.
+
+O modo Download pode ser avaliado apenas como reconhecimento/checagem de comunicação, sem iniciar gravação. O objetivo é confirmar que o computador e o cabo reconhecem o aparelho antes de se depender desse caminho de recuperação. Não executar comandos de flash nem selecionar arquivos para gravação nesta etapa.
+
+### 13.2 Contas Google, FRP e OEM Unlock
+
+O plano sugerido inclui remover as contas Google do próprio tablet enquanto o Android original ainda inicia normalmente e verificar se existe a opção **Desbloqueio de OEM** nas Opções do desenvolvedor.
+
+Ressalvas obrigatórias:
+
+- Remover as contas Google antes de uma redefinição pode ajudar a evitar o acionamento do Google Factory Reset Protection (FRP), mas não deve ser descrito como garantia absoluta de desbloqueio.
+- Manter as credenciais da conta Google anteriormente vinculada e confirmar que a pessoa proprietária consegue autenticar-se nela.
+- A opção OEM Unlock pode não estar presente em todas as versões/regiões de firmware. Sua presença, estado e efeito precisam ser confirmados no SM-T280 específico.
+- Ativar OEM Unlock e remover contas não substituem a verificação do estado do bootloader nem garantem que o aparelho aceitará uma imagem customizada.
+- **FRP do Google, bloqueio de binário/bootloader Samsung e bloqueios de integridade são mecanismos distintos.** Um não deve ser confundido com o outro.
+- Não editar `build.prop`, não executar ferramentas de bypass, não utilizar FRP Destroyer ou scripts de terceiros e não tentar contornar proteções antirroubo.
+- Não redefinir o tablet apenas para testar se FRP foi removido.
+
+Qualquer mudança no estado de OEM Unlock deverá ser tratada como uma ação posterior e deliberada, somente depois de confirmar a ROM, a recuperação, o firmware stock e o plano de retorno. Não executar agora.
+
+### 13.3 Integridade da build LineageOS 14.1 de 09/02/2021
+
+Arquivo candidato informado pela pesquisa comunitária:
+
+`lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip`
+
+Verificações necessárias, sem assumir resultados antecipadamente:
+
+1. Abrir a página exata do arquivo no AndroidFileHost e confirmar nome, desenvolvedor, data, modelo e descrição.
+2. Verificar se o desenvolvedor ou a página de download publica MD5 e/ou SHA-256. Registrar o valor informado sem o substituir por hash de outro arquivo.
+3. Ao obter o arquivo, calcular localmente SHA-256 e comparar com o valor publicado. Hash calculado sem referência confiável apenas identifica o arquivo; não autentica a origem.
+4. Verificar assinatura do pacote, quando disponível, e inspecionar o conteúdo do ZIP e o script de instalação para confirmar o assert de dispositivo, os destinos de partição e os componentes incluídos.
+5. Conferir a versão exata do TWRP recomendada pelo desenvolvedor para **gtexswifi/SM-T280**, bem como a origem e o hash da imagem/arquivo de recuperação.
+6. Não misturar recuperação, kernel, firmware, GApps ou outros ZIPs de variantes/modelos diferentes.
+
+A página geral de arquivos informada é https://androidfilehost.com/?w=files&flid=165161. Ela precisa ser filtrada até a build exata; não basta confirmar que a pasta contém algum arquivo chamado LineageOS.
+
+### 13.4 Estado do checklist
+
+| Preparação | Estado |
+|---|---|
+| Build LineageOS 14.1 identificada pelo nome | Informada pela pesquisa da pessoa usuária; falta conferir a página e o arquivo exatos |
+| Hash MD5/SHA-256 da build | Pendente |
+| Assinatura e conteúdo do ZIP | Pendente |
+| Versão TWRP exata para SM-T280 | Pendente |
+| Firmware stock SM-T280 e CSC correto | Pendente |
+| Método de restauração validado | Pendente |
+| Odin e drivers em computador Windows compatível | Pendente; Chromebook não deve ser presumido compatível |
+| Acesso à conta Google anteriormente vinculada | Deve ser confirmado pela pessoa proprietária antes de qualquer wipe |
+| Disponibilidade e efeito de OEM Unlock | Pendente de confirmação no firmware original |
+| Backup completo e verificável | Pendente |
+| Teste de gravação/instalação | **Não realizado e não autorizado nesta etapa** |
+
+**Decisão:** a LineageOS 14.1 (build de 09/02/2021) continua sendo a primeira candidata para auditoria, mas nenhuma operação de desbloqueio, wipe ou flash deve ser iniciada até que todos os itens críticos de recuperação estejam comprovados. A regra é preservar a possibilidade de retornar ao firmware original e manter as funções essenciais do SM-T280.
