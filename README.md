@@ -143,3 +143,12 @@ No SM-T280, a importação dos arquivos já existentes dependerá do seletor de 
 O provedor de armazenamento ainda será escolhido após avaliação de quotas gratuitas, custos, segurança e integração. Não presumir nuvem gratuita ou ilimitada.
 
 Ver a seção 11 de [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
+
+
+## 15. Histórico do Chrome e atalhos
+
+Foi solicitado que o Galaxy Legacy apresente o histórico do Chrome e os sites adicionados à tela inicial do Android. Um website comum não pode ler automaticamente o histórico privado do Chrome nem enumerar atalhos do launcher.
+
+A Data Portability API do Google inclui exportação de histórico e favoritos do Chrome, mas não oferece suporte a contas de usuários menores de 18 anos. Não será usado nenhum método de contorno. A alternativa web a investigar é uma lista própria de sites e importação manual de arquivos oficiais de favoritos/histórico, quando disponíveis, sem enviar histórico à nuvem por padrão.
+
+Consulte a seção 12 de [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
