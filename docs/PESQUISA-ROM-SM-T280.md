@@ -296,3 +296,99 @@ Para manter uma trilha de auditoria clara, as próximas atualizações deverão 
 A indicação de uma informação pelo Gemini não significa que ela esteja errada; significa apenas que sua origem deve ficar clara e que ela ainda precisa de confirmação independente. Do mesmo modo, encontrar uma árvore de código ou um pacote no GitHub não prova estabilidade em hardware.
 
 **Regra de colaboração:** usar o Gemini como segunda fonte de pesquisa e revisão, confrontar seus resultados com os repositórios e fontes primárias, registrar divergências e não elevar uma ROM a “aprovada” até que os critérios de compatibilidade e recuperação sejam comprovados.
+
+
+## 15. Auditoria complementar compartilhada pelo Gemini: build, firmware stock e Chromebook (09/11/2026)
+
+A pessoa usuária compartilhou uma nova resposta do Gemini com dados mais específicos sobre a LineageOS 14.1, firmware ZTO, TWRP, Odin, Heimdall e desempenho. **Os valores desta seção que não possuem uma fonte primária acessada diretamente permanecem atribuídos ao Gemini e não devem ser considerados validados pelo projeto.**
+
+### 15.1 Dados da build LineageOS 14.1 informados pelo Gemini
+
+| Campo | Valor relatado | Estado nesta auditoria |
+|---|---|---|
+| Nome | `lineage-14.1-20210209-UNOFFICIAL-gtexswifi.zip` | Build apontada pelo Gemini; falta conferir arquivo exato no AFH |
+| Data | 09/02/2021 | Informada pelo Gemini; post original #7 do XDA ainda não foi acessado diretamente nesta sessão |
+| Tamanho | 277 MB | Informado pelo Gemini; falta comparar com a página do arquivo |
+| MD5 | `165611c7a063833b66c57501be11abe3` | Informado como oficial pelo Gemini; não calculado nem comparado localmente |
+| Changelog | Suporte nativo a Adoptable Storage | Informado pelo Gemini; falta confirmar na mensagem do desenvolvedor |
+| Recuperação | TWRP 3.4.0-3 adaptado por `_mone`; também TWRP 3.2.1-1 | Informado pelo Gemini; falta confirmar o link, arquivo e compatibilidade exatos |
+| Arquivo TWRP citado | `twrp-3.4.0-3-_mone-gtexswifi.tar` | Informado pelo Gemini; não baixado nem inspecionado |
+
+Referências comunitárias indicadas:
+- AndroidFileHost: https://androidfilehost.com/?w=files&flid=165161
+- Tópico XDA: https://forum.xda-developers.com/t/rom-lineageos-14-1-samsung-galaxy-tab-a-7-0-sm-t280-gtexswifi.4158061/
+
+**Próxima verificação:** comparar nome, tamanho, MD5 e data diretamente na página do arquivo; conferir a mensagem #7 e as instruções do autor sobre TWRP. O MD5 só deve ser aceito se corresponder ao arquivo exato baixado e ao valor publicado por uma fonte primária confiável. Calcular SHA-256 local adicionalmente seria útil, mas não substitui a comparação com uma referência publicada.
+
+### 15.2 Relatos XDA indicados pelo Gemini
+
+O Gemini apresentou os seguintes relatos:
+- `sch00n3r`, publicação de 08/12/2020, sobre instalação e problemas relacionados a FRP.
+- `Mariadif`, publicação de 04/01/2021, sobre instalação usando TWRP 3.2.1-1, Odin 3.10.7 e Magisk 20.4.
+
+Esses relatos ainda não foram abertos e confrontados diretamente nesta auditoria. A data e o conteúdo exato das mensagens precisam ser conferidos. O relato de uma instalação funcional em janeiro de 2021 não comprova automaticamente a estabilidade da build de fevereiro de 2021.
+
+### 15.3 GApps e espaço de partição
+
+O Gemini relata que OpenGApps ARM 7.1 Pico é o pacote adequado e que variantes maiores podem exceder o espaço disponível em `/system`.
+
+Ressalva: **GApps não é requisito para o Android/LineageOS inicializar**; é um complemento opcional para quem deseja os serviços Google. Para este tablet, devido aos 8 GB internos e à partição de sistema limitada, a recomendação conservadora é não adicionar GApps sem necessidade e sem verificar a capacidade real, o pacote exato e a documentação da build. Não presumir que Nano/Micro sempre falhem sem conferir a mensagem e a configuração específica. O pacote deve corresponder à arquitetura e versão Android da ROM, mas nenhuma instalação de GApps está autorizada nesta etapa.
+
+### 15.4 Firmware stock brasileiro ZTO informado pelo Gemini
+
+O Gemini indicou:
+- Modelo: SM-T280.
+- Android: 5.1.1.
+- PDA/build: `T280XXU0AQJ1`.
+- CSC: `T280ZTO0AQJ1`.
+- MD5: `7635e4c5450d5c3fdffbadad6cf34c61`.
+- Revisão de bootloader: Bit 0.
+- Fonte sugerida: SamFW.
+
+**Estado:** esses valores ainda não foram confirmados diretamente em uma página de download primária, nem comparados com o CSC real do tablet. ZTO deve ser tratado como uma hipótese de região Brasil, não como CSC correto até que a região/origem e o firmware atual do aparelho sejam identificados. Não baixar nem usar firmware de outra variante ou região por semelhança do nome. O MD5 relatado pelo Gemini não foi calculado ou validado nesta sessão.
+
+O procedimento de restauração também depende da combinação exata entre firmware, revisão de bootloader, pacote de partições e ferramenta de gravação. Não declarar que o pacote é um “arquivo único” ou que pode ser aplicado com Odin sem conferir a página e os arquivos reais.
+
+### 15.5 Heimdall e Chromebook — verificação independente e ressalvas
+
+Foi consultado diretamente o repositório oficial do Heimdall:
+- Projeto: https://github.com/Benjamin-Dobell/Heimdall
+- README: https://github.com/Benjamin-Dobell/Heimdall/blob/master/README.md
+- Instruções Linux: https://github.com/Benjamin-Dobell/Heimdall/blob/master/Linux/README
+
+O README oficial informa que:
+- Heimdall é uma ferramenta open-source e multiplataforma que se comunica com dispositivos Samsung pelo protocolo USB conhecido como Odin 3, usando libusb.
+- As plataformas oficialmente suportadas incluem computadores Linux x86 e x86-64, macOS e Windows; o README menciona relatos de terceiros em ARM, sem transformar isso em suporte oficial universal.
+- O manual de Linux ensina a trabalhar com pacotes de firmware Heimdall ou arquivos de firmware extraídos.
+- No fluxo de flash personalizado, é necessário selecionar um arquivo PIT válido e associar arquivos às partições correspondentes.
+- A opção de reparticionar pode apagar os dados. O próprio manual alerta que a gravação é perigosa e pode inutilizar o dispositivo.
+
+**Correção à sugestão recebida:** não se deve afirmar que instalar Heimdall no Crostini permite gravar diretamente um pacote Odin `.tar`/ `.tar.md5` ou uma imagem arbitrária sem preparação. O manual descreve extração, PIT e seleção de partições, e não comprova compatibilidade com o firmware específico do SM-T280. O suporte genérico a Linux tampouco comprova que o passthrough USB do ChromeOS reconhecerá o tablet em Download Mode.
+
+**Estado para o Chromebook:** Heimdall é uma alternativa de código aberto que merece estudo porque o ambiente Linux do Chromebook pode ser x86-64, mas arquitetura, acesso USB pelo Crostini, pacote e protocolo precisam ser verificados em separado. Não executar comandos de gravação. Uma eventual detecção USB ou leitura de PIT não constitui prova de restauração completa.
+
+### 15.6 FRP, contas Google e OEM Unlock — correção de interpretação
+
+O Gemini sugeriu remover as contas Google do tablet original antes de qualquer wipe e conferir a opção OEM Unlock nas Opções do desenvolvedor.
+
+A precaução de remover legitimamente as contas Google antes de uma redefinição é razoável, mas a explicação “isso evita bloqueio da partição de boot pelo FRP” é imprecisa. FRP é principalmente uma proteção antirroubo/validação de conta após uma redefinição não autorizada; bloqueios de binário personalizado e estado do bootloader Samsung são mecanismos relacionados, mas distintos.
+
+A remoção de contas não garante que todo bloqueio seja removido, nem substitui a confirmação do estado do dispositivo. OEM Unlock pode variar com modelo e firmware/região; sua presença no menu e o comportamento real no SM-T280 devem ser confirmados antes de qualquer ação. Não alterar configurações nem realizar wipe nesta fase. Não usar ferramentas ou scripts de bypass.
+
+### 15.7 Desempenho e multitarefa — alegações ainda sem medição
+
+O Gemini estimou 450–600 MB de RAM em standby e cerca de 900 MB livres para aplicativos. Essa faixa **não foi medida no SM-T280 com a build específica**, e “RAM livre” não é um valor fixo: o Android usa memória para cache e serviços. Não usar essa estimativa para garantir que o tablet sustente duas ou três janelas.
+
+Android 7.1 tem suporte de plataforma a múltiplas janelas e contempla o modo freeform em configurações compatíveis, mas isso não significa que a LineageOS específica exponha ou implemente janelas flutuantes reais por padrão. É necessário verificar overlays, recursos do framework, configuração do WindowManager, permissões e comportamento dos aplicativos. Split-screen não equivale a janelas sobrepostas. A integração do Galaxy Legacy deve começar como launcher e só avançar para janelas reais após teste em uma ROM validada.
+
+### 15.8 Decisão de trabalho após a segunda auditoria
+
+- **LineageOS 14.1 build 09/02/2021:** segue como primeira candidata à auditoria, apoiada por dados específicos de arquivo e relatos apontados pelo Gemini; hash, página de download, mensagens e TWRP ainda precisam de conferência independente.
+- **AICP 12.1:** segue como publicação existente, porém sem evidência suficiente de estabilidade em hardware real.
+- **LineageOS 15.1/16.0/17.1:** árvores de código foram encontradas; não há ZIP funcional comprovado nesta investigação.
+- **Firmware stock ZTO:** build e MD5 informados pelo Gemini são pistas de pesquisa, não arquivos aprovados.
+- **Heimdall no Chromebook:** opção tecnicamente plausível em Linux, mas o suporte específico ao T280, passthrough USB e formato de firmware ainda precisam ser demonstrados.
+- **FRP/OEM:** não presumir desbloqueio garantido; nenhuma ferramenta de contorno será utilizada.
+- **Galaxy Legacy:** começar pelo launcher e integração de APIs Android comuns. Freeform/multijanela fica como fase posterior e depende da ROM e de testes reais.
+
+**Nenhuma ROM, recuperação ou firmware stock está aprovado para gravação.** Não houve download nem inspeção dos pacotes binários, cálculo de hash local, reconhecimento USB do SM-T280 ou teste físico.
