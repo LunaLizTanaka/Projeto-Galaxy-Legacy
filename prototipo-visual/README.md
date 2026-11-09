@@ -119,3 +119,14 @@ Verificações: HTML analisado pelo parser padrão do Python, JavaScript aprovad
 - Aplicativos fechados continuam disponíveis na área de trabalho, gaveta e dock para serem abertos novamente.
 
 Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parser padrão do Python, remoção dos controles confirmada estaticamente e ZIP testado sem erros. O teste real no navegador/Chrome 43 do SM-T280 ainda está pendente.
+
+
+## v0.7 — área de trabalho vazia e janelas ampliáveis
+
+- Ao iniciar, nenhum aplicativo fica aberto automaticamente.
+- Toque em um ícone da área de trabalho, da gaveta ou do dock para abrir o aplicativo em uma janela flutuante.
+- Arraste a janela até a parte superior da área de trabalho e solte para ampliá-la e ocupar a área de trabalho.
+- Arraste a barra superior de uma janela ampliada para restaurá-la ao tamanho flutuante anterior e movê-la.
+- Fechamento pelo alvo X inferior continua disponível.
+
+Verificações: JavaScript aprovado em `node --check`, HTML analisado pelo parser padrão do Python, regras principais conferidas estaticamente e ZIP testado sem erros. O teste real no navegador/Chrome 43 do SM-T280 ainda está pendente.
