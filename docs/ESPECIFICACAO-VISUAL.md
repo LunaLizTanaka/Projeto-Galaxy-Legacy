@@ -208,3 +208,63 @@ A interface poderá oferecer uma área de histórico e sites salvos, mas não po
 - O histórico de navegação não deve ser enviado à nuvem por padrão. Qualquer envio futuro exigirá consentimento separado e informação clara sobre os dados compartilhados.
 
 A interface não deve usar rótulos como “Histórico sincronizado” ou “Todos os atalhos do tablet” quando os dados vierem de uma lista manual ou importação parcial.
+
+
+
+## 18. Navegação pela internet e plano de fundo próprio do website (09/11/2026)
+
+Esta seção complementa a revisão de escopo da seção 15 e registra o comportamento visual e funcional desejado para o Galaxy Legacy.
+
+### 18.1 Ambiente web navegável
+
+O Galaxy Legacy não deve ser apenas uma página de atalhos ou uma coleção de telas demonstrativas. A experiência deverá permitir que a pessoa usuária acesse a internet a partir de uma área de navegação integrada à identidade visual do projeto.
+
+Elementos planejados para a área de navegação:
+
+- Campo para digitar um endereço web.
+- Campo ou ação de pesquisa na internet.
+- Ações de voltar, avançar e atualizar, quando aplicáveis ao contexto de navegação.
+- Sites favoritos e atalhos gerenciados pelo próprio Galaxy Legacy.
+- Área de conteúdo que tente apresentar páginas dentro da interface quando a incorporação for permitida.
+- Ação de abrir no Chrome quando a página bloquear incorporação ou não funcionar corretamente dentro da área interna.
+
+**Limite de interface:** páginas externas podem impedir a exibição em iframe por cabeçalhos ou políticas de segurança, ou depender de APIs não suportadas pelo Chrome 43. Nesses casos, a aplicação deverá explicar a limitação e oferecer a abertura pelo Chrome. Não apresentar a incorporação como compatível com toda a internet, nem chamar a interface web de navegador independente.
+
+A navegação universal em WebView própria dependeria de uma camada Android instalada. Essa camada não faz parte do escopo atual.
+
+### 18.2 Plano de fundo do Galaxy Legacy
+
+A página principal poderá possuir um plano de fundo próprio, personalizável e persistente durante a utilização do website. A composição poderá incluir cores, imagens, texturas e elementos visuais leves da identidade Strawberry Milk Soft.
+
+Esse plano de fundo pertence à interface do Galaxy Legacy e não ao sistema Android. Não afirmar que um website consegue trocar o papel de parede do Android, permanecer atrás de outros aplicativos ou substituir o launcher.
+
+Um papel de parede animado nativo depende de integração Android e fica fora do escopo de implementação atual.
+
+### 18.3 Restrições operacionais do dispositivo
+
+O Chrome 43 no SM-T280 está funcionando normalmente. Conforme informado pela pessoa responsável, o armazenamento interno tem menos de 1 MB livre porque o espaço está ocupado pelo Android e por seus componentes de sistema, e não por aplicativos adicionais instalados pela pessoa usuária.
+
+Consequentemente:
+
+- A interface deve funcionar diretamente no Chrome existente.
+- Não solicitar instalação de APK, extensão, aplicativo auxiliar ou pacote.
+- Não pedir liberação de espaço, remoção de componentes ou limpeza do armazenamento para permitir o desenvolvimento.
+- Não depender de instalação PWA ou armazenamento local volumoso.
+- Priorizar hospedagem HTTPS, recursos remotos, imagens otimizadas e carregamento sob demanda.
+- Considerar a memória e o cache do navegador como limitados.
+- Manter HTML, CSS e JavaScript conservadores, com teste específico no Chrome 43.
+- Não depender de Service Worker, cache offline ou funcionamento sem internet.
+
+O relato de armazenamento é contexto fornecido pela pessoa responsável, não uma medição independente do dispositivo.
+
+### 18.4 Estado e precedência
+
+**Aprovado:** Galaxy Legacy como website acessado pelo Chrome existente, sem instalação ou intervenção no armazenamento/sistema.
+
+**Requisito a implementar:** área de navegação web integrada, com incorporação quando permitida e abertura pelo Chrome como contingência.
+
+**Aprovado como experiência visual:** plano de fundo próprio dentro da página do Galaxy Legacy.
+
+**Fora do escopo atual:** papel de parede Android real ou animado, launcher substituto, navegador nativo/WebView própria, APK ou qualquer instalação adicional.
+
+Esta seção prevalece sobre propostas de APK ou integração Android que possam aparecer em protótipos exploratórios anteriores.
