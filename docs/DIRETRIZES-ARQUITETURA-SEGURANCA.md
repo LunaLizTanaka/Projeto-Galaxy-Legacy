@@ -292,3 +292,74 @@ Nunca solicitar senha do Google, cookies, tokens copiados manualmente ou código
 **Data Portability API para a conta deste projeto:** inelegível por restrição etária documentada pelo Google.
 
 **Alternativa aprovada para investigação:** lista de sites mantida dentro do Galaxy Legacy e importação manual de arquivos de favoritos/histórico somente quando uma exportação oficial estiver disponível e for escolhida pela pessoa usuária. O histórico não será enviado à nuvem por padrão.
+
+
+
+## 13. Decisão operacional obrigatória: uso exclusivamente pelo Chrome, sem instalação (09/11/2026)
+
+Esta seção registra a orientação confirmada pela pessoa responsável e complementa as regras anteriores. Ela prevalece sobre qualquer sugestão exploratória de criar ou instalar um aplicativo Android nesta fase.
+
+### 13.1 Situação real do tablet
+
+- O navegador Google Chrome do SM-T280 está funcionando normalmente.
+- Conforme informado pela pessoa responsável, há menos de 1 MB de espaço livre no armazenamento interno.
+- O espaço está ocupado pelo próprio Android e por componentes do sistema operacional; não se trata de aplicativos adicionais instalados pela pessoa usuária.
+- A pessoa responsável não deseja, nem consegue neste momento, instalar APKs ou outros aplicativos no tablet.
+- Não solicitar que a pessoa usuária libere espaço, desinstale componentes, apague dados, faça limpeza de armazenamento ou altere o sistema como condição para continuar o Galaxy Legacy.
+- A ausência de espaço livre não deve ser tratada como falha do Chrome: o navegador está abrindo e funcionando normalmente.
+
+Essas informações descrevem o estado relatado pela pessoa responsável; não representam uma inspeção independente do armazenamento do dispositivo.
+
+### 13.2 Regra de implementação para a fase atual
+
+**O Galaxy Legacy deverá funcionar como website acessado diretamente pelo Chrome já instalado.**
+
+Requisitos obrigatórios:
+
+- Não exigir APK, aplicativo auxiliar, extensão, instalador, root, desbloqueio de bootloader, ROM personalizada ou alteração de partições.
+- Não depender de instalação como PWA ou de um pacote local.
+- Não exigir espaço adicional livre no armazenamento interno para instalar componentes.
+- Não condicionar o desenvolvimento à liberação de espaço no tablet.
+- Hospedar a aplicação e os recursos necessários em infraestrutura web acessível por HTTPS.
+- Priorizar HTML, CSS e JavaScript conservadores, compatíveis com o Chrome 43, sem frameworks ou bibliotecas pesadas desnecessárias.
+- Evitar downloads grandes, cache offline programado, Service Workers e armazenamento local volumoso.
+- Reduzir imagens, fontes, scripts e requisições; carregar somente os recursos necessários para a tela atual.
+- Tratar cache temporário e memória de execução do próprio navegador como recursos limitados. “100% online” não significa que a página não utilize memória ou nenhum cache do Chrome.
+- O funcionamento normal do site não deve exigir que arquivos de dados do usuário sejam salvos no armazenamento interno do tablet. Quando houver arquivos pessoais, priorizar o armazenamento remoto privado e importação somente por seleção explícita no Chrome.
+
+Um atalho criado pelo recurso “Adicionar à tela inicial” do Chrome poderá ser investigado como conveniência, mas não deverá ser confundido com instalação de APK, substituição do launcher Android ou requisito para abrir o site. O comportamento exato no Chrome 43 precisa de teste físico.
+
+### 13.3 Navegação pela internet dentro do Galaxy Legacy
+
+O Galaxy Legacy deverá oferecer uma área de navegação que permita informar um endereço web ou pesquisar na internet.
+
+A implementação deve distinguir:
+
+1. **Navegação incorporada:** tentar exibir a página dentro da interface do Galaxy Legacy quando o site de destino permitir incorporação e o Chrome 43 suportar o comportamento necessário.
+2. **Navegação externa de contingência:** quando o destino bloquear incorporação por políticas como X-Frame-Options ou Content-Security-Policy, ou quando a página depender de recursos incompatíveis, oferecer abertura pelo próprio Chrome e uma forma clara de retornar ao Galaxy Legacy.
+3. **Pesquisa e favoritos próprios:** oferecer pesquisa, lista de sites favoritos e atalhos mantidos pelo próprio Galaxy Legacy, sem afirmar que a página tem acesso ao histórico privado do Chrome ou aos atalhos do launcher Android.
+
+Não prometer que todos os sites poderão ser exibidos dentro de um painel incorporado. Uma interface de navegador feita em HTML não é, por si só, um navegador com motor independente. A navegação universal dentro de uma WebView própria exigiria uma aplicação Android, que está fora do escopo atual por não ser possível instalar componentes no tablet.
+
+### 13.4 Plano de fundo: distinção obrigatória
+
+O projeto poderá oferecer um **plano de fundo visual próprio dentro da página do Galaxy Legacy**, com imagem, cores, elementos decorativos e composição que permaneçam visíveis enquanto o website estiver aberto.
+
+Um website comum não pode:
+
+- Definir diretamente o papel de parede do Android.
+- Permanecer atrás de outros aplicativos como papel de parede do sistema.
+- Substituir a tela inicial/launcher do Android.
+- Criar um papel de parede animado nativo usando somente HTML aberto no Chrome.
+
+A opção de baixar uma imagem para configuração manual no Android poderá ser considerada separadamente, mas não é requisito atual e não deve ser usada como substituto da experiência visual dentro do site.
+
+Papel de parede animado nativo, launcher próprio ou WebView em aplicativo Android são possibilidades de pesquisa futura, sem implementação ou instalação nesta fase. Não planejar essas opções como dependências do Galaxy Legacy Web.
+
+### 13.5 Precedência e critério de aceitação
+
+Em caso de conflito entre protótipos antigos, ideias de APK ou sugestões de modificar o tablet e esta decisão, prevalece esta seção.
+
+A implementação será considerada alinhada ao escopo quando puder ser aberta pela URL no Chrome já existente, não exigir instalação ou limpeza de armazenamento, permitir navegação web com contingência para páginas que bloqueiam incorporação e manter seu plano de fundo restrito à própria página.
+
+**Estado:** decisão confirmada pela pessoa responsável em 09/11/2026. Nenhum APK será desenvolvido ou solicitado como pré-requisito nesta fase.
