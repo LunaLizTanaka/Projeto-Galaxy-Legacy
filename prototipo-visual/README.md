@@ -156,3 +156,15 @@ Este README documenta protótipos históricos de exploração visual. As descri�
 A decisão vigente é construir um website 100% online, aberto pelo Chrome no Android original, com personalização visual limitada à própria experiência web. Não haverá instalação de aplicativos adicionais nem requisito offline. A composição visual definitiva ainda será especificada.
 
 Consulte [Diretrizes de arquitetura, escopo e segurança](../docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md). Em caso de divergência, as diretrizes atuais prevalecem sobre este histórico.
+
+
+
+## Nota operacional — decisão confirmada em 09/11/2026
+
+O ZIP v0.8.1 é um protótipo histórico/standalone e não deve ser confundido com a implementação atual aprovada para o tablet.
+
+A direção atual é um website 100% online, acessado diretamente pelo Chrome que já funciona no SM-T280. A pessoa responsável informou que há menos de 1 MB livre porque o armazenamento está ocupado pelo Android e por componentes do sistema, não por aplicativos adicionais. Portanto, não solicitar instalação de APK, extensão ou aplicativo auxiliar, nem pedir que a pessoa usuária libere espaço ou modifique o sistema.
+
+O Galaxy Legacy deverá incluir navegação pela internet: exibir páginas dentro da interface somente quando a incorporação for permitida e oferecer abertura pelo Chrome quando o site bloquear essa exibição. O plano de fundo personalizável será próprio da página do Galaxy Legacy; não será descrito como papel de parede real do Android.
+
+A documentação atual prevalece sobre o comportamento e as funcionalidades exploratórias do protótipo. Consulte [Diretrizes de arquitetura — seção 13](../docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md) e [Especificação visual — seção 18](../docs/ESPECIFICACAO-VISUAL.md).
