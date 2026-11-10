@@ -35,7 +35,13 @@ Criar um conjunto de sites e aplicações web projetados e testados para o apare
 3. **Biblioteca pessoal:** leitura de textos, anotações e organização de conteúdo.
 4. **Ambiente de aplicativos:** ferramentas pessoais, interfaces de personagens, assistentes virtuais e animações leves.
 
-## 4. Prioridade de navegadores\n\n- **Principal:** Google Chrome 43.0.2357.93. O desenvolvimento e os testes de aceitação devem priorizar essa versão instalada no tablet.\n- **Secundário:** Samsung Internet. A compatibilidade poderá ser verificada depois, sem comprometer a prioridade do Chrome.\n- Não presumir que os dois navegadores tenham o mesmo suporte a recursos.\n\n## 5. Diretrizes técnicas iniciais
+## 4. Prioridade de navegadores
+
+- **Principal:** Google Chrome 43.0.2357.93. O desenvolvimento e os testes de aceitação devem priorizar essa versão instalada no tablet.
+- **Secundário:** Samsung Internet. A compatibilidade poderá ser verificada depois, sem comprometer a prioridade do Chrome.
+- Não presumir que os dois navegadores tenham o mesmo suporte a recursos.
+
+## 5. Diretrizes técnicas iniciais
 
 Estas são hipóteses e critérios de compatibilidade a validar, não capacidades já confirmadas no tablet:
 
@@ -152,3 +158,15 @@ Foi solicitado que o Galaxy Legacy apresente o histórico do Chrome e os sites a
 A Data Portability API do Google inclui exportação de histórico e favoritos do Chrome, mas não oferece suporte a contas de usuários menores de 18 anos. Não será usado nenhum método de contorno. A alternativa web a investigar é uma lista própria de sites e importação manual de arquivos oficiais de favoritos/histórico, quando disponíveis, sem enviar histórico à nuvem por padrão.
 
 Consulte a seção 12 de [Diretrizes de arquitetura, escopo e segurança](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md).
+
+
+
+## 16. Uso pelo Chrome existente — sem instalação (09/11/2026)
+
+O Galaxy Legacy deverá funcionar diretamente pelo Google Chrome já instalado no SM-T280. A pessoa responsável confirmou que o Chrome funciona normalmente, mas informou que há menos de 1 MB de armazenamento livre porque o espaço está ocupado pelo Android e por componentes do sistema operacional, não por aplicativos adicionais instalados.
+
+**Decisão obrigatória nesta fase:** não exigir APK, aplicativo auxiliar, extensão, instalação PWA, root, ROM, alteração do Android, limpeza ou liberação de armazenamento. O desenvolvimento não dependerá de instalar qualquer componente no tablet.
+
+O projeto será um website 100% online, leve e hospedado em HTTPS. Deverá permitir navegar pela internet, incorporar páginas somente quando permitido e abrir no Chrome os destinos que bloquearem incorporação. O plano de fundo personalizável será parte da própria página Galaxy Legacy; não será apresentado como papel de parede real do Android.
+
+Detalhes e limites: [Diretrizes de arquitetura, escopo e segurança — seção 13](docs/DIRETRIZES-ARQUITETURA-SEGURANCA.md) e [Especificação visual — seção 18](docs/ESPECIFICACAO-VISUAL.md).
